@@ -1,12 +1,12 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="com.ionicframework.ionicmaterialdesign392344" version="0.0.1" xmlns="http://www.w3.org/ns/widgets"
         xmlns:cdv="http://cordova.apache.org/ns/1.0">
-  <name>IonicMaterialDesign</name>
+  <name>DoseDefender</name>
   <description>
-    An Ionic Framework and Cordova project.
+    Dose Defender: Your Opioid Buddy
   </description>
-  <author email="ionicmaterialdesign@gmail.com" href="http://ionicframework.com/">
-    Ionic Up Team
+  <author email="ebesco@yahoo.com" href="http://dosedefender.com">
+    High uP 
   </author>
   <content src="index.html"/>
   <allow-navigation href="tel:*" />

@@ -1,7 +1,7 @@
 {
-  "name": "ionicmaterialdesign",
+  "name": "dosedefendeer",
   "version": "1.1.1",
-  "description": "IonicMaterialDesign: An Ionic project",
+  "description": "Dose Defender: Your Opioid Buddy",
   "dependencies": {
     "gulp": "^3.5.6",
     "gulp-sass": "^2.0.4",
