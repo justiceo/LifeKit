@@ -22,9 +22,9 @@
                 <img class="user-img" src="img/profileAvatar.jpg">
 
                 <p>
-                    <span class="title">Ionic Material</span>
+                    <span class="title">FirstName Last</span>
                     <br/>
-                    <span class="sub-title">Material Design Application</span>
+                    <span class="sub-title">Status: Green</span>
                 </p>
             </div><!--end menu header section-->
         </div> <!--menu content section-->
@@ -34,13 +34,13 @@
             <!--It will disable animation to better performance on android.-->
             <!--list section-->
             <div ng-if="isAndroid" class="menu-list">
-                <md-subheader class="md-warn">Application Storage</md-subheader>
+                <md-subheader class="md-warn">My Account</md-subheader>
                 <div class="row menu-item"  ng-click="navigateTo('app.contractlist')">
                     <div class="col-33">
                         <i class="fa fa-database"></i>
                     </div>
                     <div class="col-66">
-                        <span>SQLite DB</span>
+                        <span>Edit Information</span>
                     </div>
                 </div>
                 <div class="row menu-item" ng-click="navigateTo('app.notelist')">
@@ -48,18 +48,10 @@
                         <i class="fa fa-cube"></i>
                     </div>
                     <div class="col-66">
-                        <span>Local Storage DB</span>
+                        <span>Emergency Contacts</span>
                     </div>
                 </div>
-                <md-subheader class="md-warn">Social Network Connect</md-subheader>
-                <div class="row menu-item"  ng-click="navigateTo('app.wordpressLogin')">
-                    <div class="col-33">
-                        <i class="fa fa-wordpress"></i>
-                    </div>
-                    <div class="col-66">
-                        <span>WordPress</span>
-                    </div>
-                </div>
+                <md-subheader class="md-warn">Social Connect</md-subheader>
                 <div class="row menu-item"  ng-click="navigateTo('app.facebookLogin')">
                     <div class="col-33">
                         <i class="fa fa-facebook"></i>
@@ -74,30 +66,6 @@
                     </div>
                     <div class="col-66">
                         <span>Google Plus</span>
-                    </div>
-                </div>
-                <div class="row menu-item"  ng-click="navigateTo('app.instagramLogin')">
-                    <div class="col-33">
-                        <i class="fa fa-instagram"></i>
-                    </div>
-                    <div class="col-66">
-                        <span>Instagram</span>
-                    </div>
-                </div>
-                <div class="row menu-item"  ng-click="navigateTo('app.foursquareLogin')">
-                    <div class="col-33">
-                        <i class="fa fa-foursquare"></i>
-                    </div>
-                    <div class="col-66">
-                        <span>Foursquare</span>
-                    </div>
-                </div>
-                <div class="row menu-item"  ng-click="navigateTo('app.dropboxLogin')">
-                    <div class="col-33">
-                        <i class="fa fa-dropbox"></i>
-                    </div>
-                    <div class="col-66">
-                        <span>Dropbox</span>
                     </div>
                 </div>
                 <md-subheader class="md-warn">Share Application Content</md-subheader>
@@ -169,12 +137,12 @@
                         <span>Mobile Contract</span>
                     </div>
                 </div>
-                <div class="row menu-item"  ng-click="navigateTo('app.imagePicker')">
+                <div class="row menu-item"  ng-click="navigateTo('app.menuDashboard')">
                     <div class="col-33">
-                        <i class="fa fa-picture-o"></i>
+                        <i class="fa fa-th-large"></i>
                     </div>
                     <div class="col-66">
-                        <span>Image Picker</span>
+                        <span>Menu Dashboard</span>
                     </div>
                 </div>
                 <div class="row menu-item"  ng-click="navigateTo('app.vibration')">
@@ -235,14 +203,7 @@
                         <span>Pricing</span>
                     </div>
                 </div>
-                <div class="row menu-item"  ng-click="navigateTo('app.menuDashboard')">
-                    <div class="col-33">
-                        <i class="fa fa-th-large"></i>
-                    </div>
-                    <div class="col-66">
-                        <span>Menu Dashboard</span>
-                    </div>
-                </div>
+
                 <div class="row menu-item"  ng-click="navigateTo('app.expense')">
                     <div class="col-33">
                         <i class="fa fa-suitcase"></i>
