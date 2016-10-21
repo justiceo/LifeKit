@@ -583,6 +583,15 @@ angular.module('starter', ['ionic','ngIOS9UIWebViewPatch', 'starter.controllers'
                     }
                 }
             })
+            .state('app.splash', {
+              url: "/welcome",
+              cache: false,
+              views: {
+                'menuContent': {
+                  templateUrl: "templates/themes/authentication/html/splash.html"
+                }
+              }
+            })
             .state('app.signUp', {
                 url: "/signUp",
                 cache: false,

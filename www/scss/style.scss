@@ -1630,11 +1630,45 @@ md-sidenav {
     background: $url_background_cover_try_app_02;
     background-repeat: no-repeat;
     background-size: 100%;
+    .try-app-footer-content {
+      bottom: 20px;
+      position: fixed;
+      padding: 16px 2px 10px 2px;
+      div.col-50 {
+        a {
+          width: 80% !important;
+          height: 30px;
+        }
+        .left {
+          margin-right: -20px;
+        }
+        .right {
+          margin-left: -14px;
+        }
+      }
+    }
   }
   .slide-03 {
     background: $url_background_cover_try_app_03;
     background-repeat: no-repeat;
     background-size: 100%;
+    .try-app-footer-content {
+      bottom: 20px;
+      position: fixed;
+      padding: 16px 2px 10px 2px;
+      div.col-50 {
+        a {
+          width: 80% !important;
+          height: 30px;
+        }
+        .left {
+          margin-right: -20px;
+        }
+        .right {
+          margin-left: -14px;
+        }
+      }
+    }
   }
   .slide-04 {
     background: $url_background_cover_try_app_04;
