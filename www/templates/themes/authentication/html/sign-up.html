@@ -14,36 +14,45 @@
     <!--social sign up section-->
     <ion-content id="social-sign-up-content">
         <div class="app-icon">
-            <img src="img/app_icon.png" class="md-card-image">
+          <img src="img/app_icon.png" class="md-card-image">
         </div>
+
+        <div class="normal-signup">
         <!--input section-->
         <md-input-container md-no-float="">
-            <div>
-                <input class="user-name" placeholder="Username">
-            </div>
+          <div>
+            <input class="user-name" placeholder="Username">
+          </div>
         </md-input-container>
         <md-input-container md-no-float="">
-            <div>
-                <input type="password" class="user-name" placeholder="Password">
-            </div>
+          <div>
+            <input type="password" class="user-name" placeholder="Password">
+          </div>
         </md-input-container>
         <md-input-container md-no-float="">
-            <div>
-                <input type="password" class="user-name" placeholder="Confirm Password">
-            </div>
+          <div>
+            <input type="password" class="user-name" placeholder="Confirm Password">
+          </div>
         </md-input-container>
         <md-input-container md-no-float="">
-            <div>
-                <input class="user-name" placeholder="Mail">
-            </div>
+          <div>
+            <input class="user-name" placeholder="Mail">
+          </div>
         </md-input-container>
         <md-checkbox aria-label="CheckboxTerms">
-            I accept terms and conditions.
+          I accept terms and conditions.
         </md-checkbox>
         <!--end input section-->
         <a class="md-raised social-button md-button md-default-theme material-background">
-            Sign Up
+          Sign Up
         </a>
+      </div>
+
+        <div style="margin-top: 20px">
+          <a class="md-raised social-button md-button md-default-theme facebook-background" ng-click="login()">
+            Sign Up with Facebook
+          </a>
+        </div>
 
     </ion-content><!--end social sign up section-->
 </ion-view>
