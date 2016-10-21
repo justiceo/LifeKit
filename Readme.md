@@ -6,6 +6,7 @@ A hybrid mobile app to help curb the increasing number of deaths from opioid ove
 [Add more to this later]
 
 
+
 High-level overview of modules
 ------------------------------
 
@@ -30,14 +31,17 @@ Notes: Best implemented as a task in the existing task runner. Experience with r
 
 
 
+
 Some Branch Management Stuff
 ----------------------------
 
-The Master branch would remain reserved for historical reasons lol
+The Master branch would remain reserved for historical reasons lol.
 So we'll use Dev as the staging environment. Hence pulls/clones should always use Dev.
 But real work is done on individual (named) branches that originate from Dev.
 So I would push to a branch named origin/justice which originated from (or at least is up to date with) origin/dev.
+
 Some nice git article just in case someone needs it - http://rogerdudler.github.io/git-guide/
+
 
 
 
@@ -55,6 +59,7 @@ Not a fan of the commandline or not interested in learning 'em git commands? Try
 Download link https://www.sourcetreeapp.com/. It's just a nice GUI for git, so you can forget all the commands.
 
 NodeJs [Required] for managing external dependencies. Download and install https://nodejs.org/en/
+
 
 
 
