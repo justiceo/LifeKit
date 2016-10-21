@@ -574,21 +574,21 @@ angular.module('starter', ['ionic','ngIOS9UIWebViewPatch', 'starter.controllers'
                     }
                 }
             })
-            .state('app.fakeLogin', {
-                url: "/fakeLogin",
+            .state('app.login', {
+                url: "/login",
                 cache: false,
                 views: {
                     'menuContent': {
-                        templateUrl: "templates/themes/authentication/html/fake-login.html"
+                        templateUrl: "templates/themes/authentication/html/login.html"
                     }
                 }
             })
-            .state('app.fakeSignUp', {
-                url: "/fakeSignUp",
+            .state('app.signUp', {
+                url: "/signUp",
                 cache: false,
                 views: {
                     'menuContent': {
-                        templateUrl: "templates/themes/authentication/html/fake-sign-up.html"
+                        templateUrl: "templates/themes/authentication/html/sign-up.html"
                     }
                 }
             })
