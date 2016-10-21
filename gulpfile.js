@@ -10,7 +10,7 @@ var sh = require('shelljs');
 var paths = {
   sass: ['./www/scss/**/*.scss']
 };
-var buildDir = "./www/build";
+var buildDir = "./www";
 
 gulp.task('default', ['sass']);
 
