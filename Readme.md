@@ -25,6 +25,9 @@ Learn Pages
 Vitals Monitor
 : Monitors the state of user (using accelerometer for now) and triggers emergency procedure when necessary.
 
+Emergency Module
+: Triggers and manages emergency procedure, calling ems or contacts, displaying important info on resuscitation, displaying info about naloxone locator, vibrating phone.
+
 Porting to Native app
 : Create android and ios versions of the app, including guides on how it can be installed. 
 Notes: Best implemented as a task in the existing task runner. Experience with real android/ios apps would make this a breeze. 
@@ -62,12 +65,16 @@ NodeJs [Required] for managing external dependencies. Download and install https
 
 
 
-
 Starting the Application
 ------------------------
 
 * Steps below assume NodeJs has been installed and working.
 * Open Git Bash and navigate to the project root directory
 * Install Gulp (the build system and task runner) - type `npm install -g gulp`
+* Install Ionic (the hybrid app framework) - type `npm install -g ionic`
 * Install the apps dependencies - type `npm install`
 * Launch in browser - type `gulp`
+
+
+Application layout
+------------------
