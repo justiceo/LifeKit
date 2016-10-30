@@ -81,7 +81,7 @@ Linux:
 ======
 1. sudo apt-get install npm nodejs-legacy
 2. git clone https://github.com/justiceo/Dose-Defender.git
-3. dose-defender
+3. cd dose-defender
 4. npm install
 5. node_modules/gulp/bin/gulp.js
 6. npm install ionic
