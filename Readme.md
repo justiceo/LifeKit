@@ -67,7 +67,8 @@ NodeJs [Required] for managing external dependencies. Download and install https
 
 Starting the Application
 ------------------------
-
+Windows:
+========
 * Steps below assume NodeJs has been installed and working.
 * Open Git Bash and navigate to the project root directory
 * Install Gulp (the build system and task runner) - type `npm install -g gulp`
@@ -76,7 +77,16 @@ Starting the Application
 * Build application - type `gulp`
 * Launch in browser - type `ionic serve`
 
-
+Linux:
+======
+1. sudo apt-get install npm nodejs-legacy
+2. git clone https://github.com/justiceo/Dose-Defender.git
+3. dose-defender
+4. npm install
+5. node_modules/gulp/bin/gulp.js
+6. npm install ionic
+7. node_modules/ionic/bin/ionic server
+8. Tell it localhost or your IP
 
 Application Design
 ------------------
