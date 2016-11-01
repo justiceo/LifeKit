@@ -22,8 +22,8 @@ window.globalVariable = {
         wordpressColor: "#0087BE"
     },// End custom color style variable
     startPage: {
-        url: "/app/dashboard",//Url of start page.
-        state: "app.dashboard"//State name of start page.
+        url: "/app/welcome",//Url of start page.
+        state: "app.welcome"//State name of start page.
     },
     message: {
         errorMessage: "Technical error please try again later." //Default error message.
@@ -296,7 +296,7 @@ angular.module('starter', ['ionic','ngIOS9UIWebViewPatch', 'starter.controllers'
         //Learn more about material theme: https://material.angularjs.org/latest/#/Theming/01_introduction
         $mdThemingProvider
             .theme('default')
-            .primaryPalette('cyan')
+            .primaryPalette('light-blue')
             .accentPalette('blue');
 
         appPrimaryColor = $mdColorPalette[$mdThemingProvider._THEMES.default.colors.primary.name]["500"]; //Use for get base color of theme.
