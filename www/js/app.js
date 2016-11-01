@@ -919,6 +919,14 @@ angular.module('starter', ['ionic','ngIOS9UIWebViewPatch', 'starter.controllers'
                         controller: "androidMapConnectCtrl"
                     }
                 }
+            })
+            .state('app.emergency', {
+                url: "/e",
+                views: {
+                    'menuContent': {
+                        templateUrl: "templates/modules/emergency/html/emergency.html"
+                    }
+                }
             });// End $stateProvider
 
         //Use $urlRouterProvider.otherwise(Url);
