@@ -579,7 +579,8 @@ angular.module('starter', ['ionic','ngIOS9UIWebViewPatch', 'starter.controllers'
                 cache: false,
                 views: {
                     'menuContent': {
-                        templateUrl: "templates/themes/authentication/html/login.html"
+                        templateUrl: "templates/themes/authentication/html/login.html",
+                        controller: "authCtrl"
                     }
                 }
             })
@@ -588,7 +589,8 @@ angular.module('starter', ['ionic','ngIOS9UIWebViewPatch', 'starter.controllers'
               cache: false,
               views: {
                 'menuContent': {
-                  templateUrl: "templates/themes/authentication/html/splash.html"
+                    templateUrl: "templates/themes/authentication/html/splash.html",
+                    controller: "authCtrl"
                 }
               }
             })
@@ -597,7 +599,8 @@ angular.module('starter', ['ionic','ngIOS9UIWebViewPatch', 'starter.controllers'
                 cache: false,
                 views: {
                     'menuContent': {
-                        templateUrl: "templates/themes/authentication/html/sign-up.html"
+                        templateUrl: "templates/themes/authentication/html/sign-up.html",
+                        controller: "authCtrl"
                     }
                 }
             })
