@@ -105,3 +105,17 @@ Application Design
 * The js & html code for the modules are usually located in /www/js/templates/module_name
 * The dashboard module is the default which is loaded on init or when a desired module isn't found
 
+
+Android Environment Setting
+------------------
+1. Setup following:
+    1. Install java greater than 1.8
+    2. Install Android SDK
+    3. Install Android emulator if you want to use it
+2. Type 'ionic hooks add' to solve permission issue
+3. Type 'ionic platform add android' to add android platform
+4. Type 'ionic build android' to build android apk
+5. Launch
+    1. on Device: Type 'ionic run android'
+    2. on Emulator: Type 'ionic emulate android'
+
