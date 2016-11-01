@@ -1,0 +1,19 @@
+[
+  {
+    "name" : {
+      "formatted" : "Bob"
+    },
+    "phoneNumbers" : [{
+      "id": 0,
+      "pref": false,
+      "type": "mobile",
+      "value": "265-342-5447"
+    }],
+    "emails": [{
+      "id": 0,
+      "pref": false,
+      "type": "home",
+      "value": "bob.dylan@gmail.com"
+    }]
+  }
+]
