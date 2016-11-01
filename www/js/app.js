@@ -921,10 +921,11 @@ angular.module('starter', ['ionic','ngIOS9UIWebViewPatch', 'starter.controllers'
                 }
             })
             .state('app.emergency', {
-                url: "/e",
+                url: "/emergency",
                 views: {
                     'menuContent': {
-                        templateUrl: "templates/modules/emergency/html/emergency.html"
+                        templateUrl: "templates/modules/emergency/html/emergency.html",
+			controller: "emergencyCtrl"
                     }
                 }
             });// End $stateProvider
