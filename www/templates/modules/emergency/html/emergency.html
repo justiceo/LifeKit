@@ -1,29 +1,6 @@
-<!--View Information-->
-<!--View name : Device Flashlight-->
-<!--Controller name : emergencyCtrl-->
-<!--Controller path : www/templates/modules/emergency/js/controllers.js-->
-<!--State name : app.flashLight-->
-<!--URL : #app/emergency-->
-
-<ion-view title="EMERGENCY!!!">
-    <!--flash light section-->
-    <!--flash light icon section-->
-    <ion-content id="flash-light-content" scroll="false">
--        <div class="row">
-            <div id="flash-light-icon" class="col">
-                <i ng-class="{'flash-light-color' : isTurnOn}" class="fa fa-diamond center-screen icon-flash-light"></i>
-            </div>
-        </div><!--end flash light icon section-->
-
-        <div class="row">
-            <!--flash light control section-->
-            <div id="flash-light-control" class="col">
-                <p>Devise Flash Light</p>
-                <a ng-class="{'md-warn' : isTurnOn}" class="md-raised md-primary md-button md-default-theme"
-                   ng-click="flashLight()">
-                    Turn {{isTurnOn == true ? 'OFF' : 'On'}}
-                </a>
-            </div><!--end flash light control section-->
-        </div>
-    </ion-content><!--end flash light section-->
+<ion-view title="">
+   <ion-content scroll="true">
+     <div ui-view="one"></div>
+     <div ui-view="two"></div>
+   </ion-content>
 </ion-view>

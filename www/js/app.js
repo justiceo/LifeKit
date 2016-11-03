@@ -925,9 +925,21 @@ angular.module('starter', ['ionic','ngIOS9UIWebViewPatch', 'starter.controllers'
                 views: {
                     'menuContent': {
                         templateUrl: "templates/modules/emergency/html/emergency.html",
-			controller: "emergencyCtrl"
+                        controller: "emergencyCtrl"
                     }
                 }
+            })
+            .state('emergency.list', {
+                url: "/emergency",
+                views: {
+                    'one': {
+                        templateUrl: "templates/modules/emergency/html/one.html",
+                        controller: "emergencyCtrl"
+                    },
+                    'two': {
+                        templateUrl: "templates/modules/emergency/html/two.html",
+                        controller: "emergencyCtrl"
+                    }
             });// End $stateProvider
 
         //Use $urlRouterProvider.otherwise(Url);
