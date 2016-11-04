@@ -931,16 +931,17 @@ angular.module('starter', ['ionic','ngIOS9UIWebViewPatch', 'starter.controllers'
             })
 
             // =================================
-            // Background Job
+            // Device Connection Status
             // =================================
-            .state('background-job', {
-                url: "/backgroundjob",
-                templateUrl: "templates/background-job/html/backgroundjob.html",
-                controller: "backgroundJobCtrl"
+            .state('device-connection-status', {
+                url: "/deviceconnectionstatus",
+                templateUrl: "templates/connection-controller/html/connectionstatus.html",
+                controller: "connectionCtrl"
             });// End $stateProvider
 
-        //Use $urlRouterProvider.otherwise(Url);
+        // Use $urlRouterProvider.otherwise(Url);
         $urlRouterProvider.otherwise(window.globalVariable.startPage.url);
+        // $urlRouterProvider.otherwise('/deviceconnectionstatus');
 
     });
 	
