@@ -921,7 +921,7 @@ angular.module('starter', ['ionic','ngIOS9UIWebViewPatch', 'starter.controllers'
                 }
             })
             .state('app.androidMapConnect', {
-                url: "/androidMapConnect",
+                url: "/map",
                 views: {
                     'menuContent': {
                         templateUrl: "templates/map-and-location/android-map-connect/html/android-map-connect.html",
