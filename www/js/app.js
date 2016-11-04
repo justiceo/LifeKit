@@ -313,6 +313,12 @@ angular.module('starter', ['ionic','ngIOS9UIWebViewPatch', 'starter.controllers'
         //Learn more about ionNavView at http://ionicframework.com/docs/api/directive/ionNavView/
         //Learn more about  AngularUI Router's at https://github.com/angular-ui/ui-router/wiki
         $stateProvider
+		$stateProvider
+			  .state('map', {
+				url: '/map',
+				templateUrl: 'templates/map.html',
+				controller: 'MapCtrl'
+			  })
             .state('app', {
                 url: "/app",
                 abstract: true,
@@ -918,8 +924,8 @@ angular.module('starter', ['ionic','ngIOS9UIWebViewPatch', 'starter.controllers'
                 url: "/androidMapConnect",
                 views: {
                     'menuContent': {
-                        templateUrl: "templates/map-and-location/android-map-connect/html/android-map-connect.html",
-                        controller: "androidMapConnectCtrl"
+                        templateUrl: "templates/map.html",
+                        controller: "MapCtrl"
                     }
                 }
             });// End $stateProvider
@@ -928,3 +934,5 @@ angular.module('starter', ['ionic','ngIOS9UIWebViewPatch', 'starter.controllers'
         $urlRouterProvider.otherwise(window.globalVariable.startPage.url);
 
     });
+	
+	
