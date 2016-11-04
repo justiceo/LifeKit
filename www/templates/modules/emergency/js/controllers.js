@@ -67,12 +67,12 @@ appControllers.controller('emergencyCtrl', function ($scope, $cordovaFlashlight,
 
     $scope.initialForm();
     $( document ).ready(function() {
-	alert( "ready!" );
-	$scope.flashLight();
-	while (true)
+	//alert( "ready!" );
+	//$scope.flashLight();
+	/*while (true)
 	{
 		$scope.vibrate();
-	}
+	}*/
     });
 
 });//End of controller

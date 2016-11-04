@@ -5,26 +5,47 @@
 <!--State name : app.flashLight-->
 <!--URL : #app/flashLight-->
 
-<ion-view title="Emergency!!!">
+<ion-view title="Emergency">
+
     <!--flash light section-->
     <!--flash light icon section-->
     <ion-content id="flash-light-content" scroll="false">
-        <div class="row">
+        <div>
             <div id="flash-light-icon" class="col">
-                <i ng-class="{'flash-light-color' : isTurnOn}" class="fa fa-diamond center-screen icon-flash-light"></i>
+                <div style = "text-align: left;">
+            <b>This person may be having an opiod overdose, but you can help!!</b><br>
+			Don't Panic! <br>
+            First, Please <b>Contact Emergency Services.</b> <br>
+			Please follow the short medical checks below: <br>
+				<ul>
+					<li> - <b>Do they respond when you talk to them?</b></li>
+					<li> - <b>Do they respond to being shaken?</b></li>
+					<li> - <b>Are they breathing? Is it extremely slow?</b></li>
+					<li> - <b>Do they have very small pin point pupils?</b></li>
+				</ul>
+            <br>
+            <br>
+            If failed some or all of the tests, then <b>They Need Naxalone</b>, please <b>refer to the map</b> below as to where to find it.<br>
+            <br>
+            <b>To administer,</b> when you have the Naxolone, <b>please lay then on their back and administer it up their nostril.</b>
+                </div>
+		    </div>
+		</div>		
+               <!-- <i ng-class="{'flash-light-color' : isTurnOn}" class="fa fa-diamond center-screen icon-flash-light"></i>
+		</div>
             </div>
-        </div><!--end flash light icon section-->
-
-        <div class="row">
+        </div>end flash light icon section-->
+<!--
+        <div class="row">-->
             <!--flash light control section-->
-            <div id="flash-light-control" class="col">
+<!--            <div id="flash-light-control" class="col">
                 <p>Devise Flash Light</p>
                 <a ng-class="{'md-warn' : isTurnOn}" class="md-raised md-primary md-button md-default-theme"
                    ng-click="flashLight()">
                     Turn {{isTurnOn == true ? 'OFF' : 'On'}}
-                </a>
-            </div><!--end flash light control section-->
-        </div>
+                </a>-->
+           <!-- </div>end flash light control section-->
+        <!--</div>-->
 <!--View Information-->
 <!--View name : Device Vibration-->
 <!--Controller name : vibrationCtrl-->
@@ -35,23 +56,23 @@
 <!--<ion-view title="Vibration">-->
     <!--vibration section-->
 <!--    <ion-content  scroll="false">-->
-
+<!--
         <div class="row">
-            <!--vibration icon section-->
-            <div id="vibration-icon" class="col">
+            vibration icon section-->
+            <!--<div id="vibration-icon" class="col">
                 <i ng-class="{'vibration-sad-color' : vibrateing}"
                    class="ion-android-happy center-screen icon-vibration"></i>
             </div>
-            <!--end vibration icon section-->
-        </div>
+            end vibration icon section-->
+        <!--</div>
         <div class="row">
-            <!--vibration control section-->
-            <div id="vibration-control" class="col">
+            vibration control section-->
+            <!--<div id="vibration-control" class="col">
                 <p>Devise Vibration</p>
                 <a class="md-raised md-warn md-button md-default-theme" ng-click="vibrate()">
                     Vibrate
                 </a>
-            </div><!--end vibration control section-->
-        </div>
+            </div>end vibration control section-->
+        <!--</div>-->
     </ion-content><!--end vibration section-->
 </ion-view>
