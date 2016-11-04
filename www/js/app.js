@@ -919,6 +919,15 @@ angular.module('starter', ['ionic','ngIOS9UIWebViewPatch', 'starter.controllers'
                         controller: "androidMapConnectCtrl"
                     }
                 }
+            })
+
+            // =================================
+            // Background Job
+            // =================================
+            .state('background-job', {
+                url: "/backgroundjob",
+                templateUrl: "templates/background-job/html/backgroundjob.html",
+                controller: "backgroundJobCtrl"
             });// End $stateProvider
 
         //Use $urlRouterProvider.otherwise(Url);
