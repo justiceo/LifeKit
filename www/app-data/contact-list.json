@@ -1,0 +1,62 @@
+[
+  {
+    "name" : {
+      "givenName" : "Bob",
+      "familyName" : "Dylan",
+      "middleName" : "",
+      "formatted" : "Bob Dylan"
+    },
+    "phoneNumbers" : [{
+      "id": 0,
+      "pref": false,
+      "type": "mobile",
+      "value": "265-342-5447"
+    }],
+    "emails": [{
+      "id": 0,
+      "pref": false,
+      "type": "home",
+      "value": "bob.dylan@gmail.com"
+    }]
+  },
+  {
+    "name" : {
+      "firstName" : "Lily",
+      "familyName" : "Smith",
+      "middleName" : "",
+      "formatted" : "Lily Smith"
+    },
+    "phoneNumbers" : [{
+      "id": 1,
+      "pref": false,
+      "type": "mobile",
+      "value": "265-982-3251"
+    }],
+    "emails": [{
+      "id": 1,
+      "pref": false,
+      "type": "home",
+      "value": "lily.s@gmail.com"
+    }]
+  },
+  {
+    "name" : {
+      "firstName" : "Mike",
+      "familyName" : "Brown",
+      "middleName" : "",
+      "formatted" : "Mike Brown"
+    },
+    "phoneNumbers" : [{
+      "id": 2,
+      "pref": false,
+      "type": "mobile",
+      "value": "215-342-0934"
+    }],
+    "emails": [{
+      "id": 2,
+      "pref": false,
+      "type": "home",
+      "value": "mike.03.99@gmail.com"
+    }]
+  }
+]

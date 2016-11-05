@@ -35,12 +35,12 @@
       <!--list section-->
       <div ng-if="isAndroid" class="menu-list">
         <md-subheader class="md-warn">My Account</md-subheader>
-        <div class="row menu-item" ng-click="navigateTo('app.contractlist')">
+        <div class="row menu-item" ng-click="navigateTo('app.contactList')">
           <div class="col-33">
-            <i class="fa fa-database"></i>
+            <i class="fa fa-users"></i>
           </div>
           <div class="col-66">
-            <span>Edit Information</span>
+            <span>Contact Manager</span>
           </div>
         </div>
         <div class="row menu-item" ng-click="navigateTo('app.notelist')">
@@ -141,9 +141,9 @@
       <!--It will show animation when selecting row.-->
       <md-list ng-if="!isAndroid">
         <md-subheader class="md-warn">Application Storage</md-subheader>
-        <md-list-item class="menu-list-item" ng-click="navigateTo('app.contractlist')">
-          <i class="fa fa-database"></i>
-          <span>SQLite DB</span>
+        <md-list-item class="menu-list-item" ng-click="navigateTo('app.contactList')">
+          <i class="fa fa-users"></i>
+          <span>Contact Manager</span>
         </md-list-item>
         <md-list-item class="menu-list-item" ng-click="navigateTo('app.notelist')">
           <i class="fa fa-cube"></i>

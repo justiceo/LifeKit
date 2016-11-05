@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="com.ionicframework.ionicmaterialdesign392344" version="0.0.1" xmlns="http://www.w3.org/ns/widgets"
         xmlns:cdv="http://cordova.apache.org/ns/1.0">
-  <name>DoseDefender</name>
+  <name>LifeKit</name>
   <description>
-    Dose Defender: Your Opioid Buddy
+    LifeKit - locate.naloxone.now
   </description>
-  <author email="ebesco@yahoo.com" href="http://dosedefender.com">
+  <author email="ebesco@yahoo.com" href="http://LifeKit.com">
     High uP 
   </author>
   <content src="index.html"/>
