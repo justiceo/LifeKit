@@ -325,6 +325,31 @@ angular.module('starter', ['ionic','ngIOS9UIWebViewPatch', 'starter.controllers'
                 templateUrl: "templates/menu/html/menu.html",
                 controller: 'menuCtrl'
             })
+            .state('app.contactList', {
+                url: "/contactList",
+                cache: false,
+                views: {
+                    'menuContent': {
+                        templateUrl: "templates/contact-manager/html/contact-list.html",
+                        controller: 'contactListCtrl'
+                    }
+
+                }
+            })
+            .state('app.contactDetail', {
+                url: "/contactDetail",
+                params: {
+                    contactDetail: null,
+                    actionDelete: false
+                },
+                views: {
+                    'menuContent': {
+                        templateUrl: "templates/contact-manager/html/contact-detail.html",
+                        controller: 'contactDetailCtrl'
+                    }
+
+                }
+            })
             .state('app.dashboard', {
                 url: "/dashboard",
                 params:{

@@ -16,7 +16,6 @@ appControllers.controller('MapCtrl', function($scope, $state, $cordovaGeolocatio
       zoom: 15,
       mapTypeId: google.maps.MapTypeId.ROADMAP
     };
- 
     map = new google.maps.Map(document.getElementById("map"), mapOptions);
  
 	var yourLocation = new google.maps.Marker({
@@ -34,12 +33,10 @@ appControllers.controller('MapCtrl', function($scope, $state, $cordovaGeolocatio
 	
     service = new google.maps.places.PlacesService(map);
     service.textSearch(request, callback);	
-	  
   }, function(error){
     console.log("Could not get location");
   });
 });
-
 
 function callback(results, status) {
 	//console.log(results);
@@ -57,8 +54,6 @@ function callback(results, status) {
     }
   }
 }
-
-
 
 //This is Controller for Dialog box.
 appControllers.controller('DialogController', function ($scope, $mdDialog, displayOption) {
