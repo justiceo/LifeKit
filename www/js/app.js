@@ -635,6 +635,17 @@ angular.module('starter', ['ionic','ngIOS9UIWebViewPatch', 'starter.controllers'
                     }
                 }
             })
+			
+			.state('app.typeUserSelect', {
+                url: "/typeUserSelect",
+                cache: false,
+                views: {
+                    'menuContent': {
+                        templateUrl: "templates/typeUserSelect.html",
+                        //controller: "typeUserSelect"
+                    }
+                }
+            })
             .state('app.productList', {
                 url: "/productList",
                 views: {
