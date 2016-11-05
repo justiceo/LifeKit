@@ -876,14 +876,48 @@ angular.module('starter', ['ionic','ngIOS9UIWebViewPatch', 'starter.controllers'
                     }
                 }
             })
-            .state('app.restaurant', {
-                url: "/restaurant",
+            .state('app.naloxoneInfo', {
+                url: "/NaloxoneInfo",
                 views: {
                     'menuContent': {
-                        templateUrl: "templates/themes/restaurant/html/restaurant.html"
+                        templateUrl: "templates/themes/information/html/naloxoneInfo.html"
                     }
                 }
             })
+            .state('app.opioidInfo', {
+                url: "/OpioidInfo",
+                views: {
+                    'menuContent': {
+                        templateUrl: "templates/themes/information/html/opioidInfo.html"
+                    }
+                }
+            })
+            .state('app.appInfo', {
+                url: "/appInfo",
+                views: {
+                    'menuContent': {
+                        templateUrl: "templates/themes/information/html/appInfo.html"
+                    }
+                }
+            })
+
+            
+		   /*	.state('app.opioidInfo',{
+					url: "/OpioidInfo",
+					views: {
+							'menuContent': {
+								templateURL: "templates/themes/information/html/opioidInfo.html"
+							}
+						}
+				})
+				.state('app.appInfo',{
+					url: "/AppInfo",
+					views: {
+						'menuContent': {
+							templateURL: "templates/themes/information/html/appInfo.html"
+						}
+					}
+				})*/
             .state('app.singlePushNotification', {
                 url: "/singlePushNotification",
                 views: {
