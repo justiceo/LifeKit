@@ -218,6 +218,13 @@ ion-header-bar {
   }
 }//end back button navigation bar
 
+.nav-save-btn {
+  color: $color_white;
+}
+.nav-save-btn.activated {
+  color: #4cd964;
+}
+
 .progress-circular.spinner.spinner-android svg {
   width: 52px;
   height: 52px;
