@@ -900,8 +900,22 @@ angular.module('starter', ['ionic','ngIOS9UIWebViewPatch', 'starter.controllers'
                     }
                 }
             })
-
-            
+				.state('app.opioidToolInfo',{
+					url: "/opioidToolInfo",
+					views: {
+						 'menuContent': {
+							  templateUrl: "templates/themes/opioidTool/html/opioidToolInfo.html"
+						}
+					}
+				})
+            .state ('app.opioidTool',{
+					url:"/opioidTool",
+					views: {
+						'menuContent': {
+							 templateUrl: "templates/themes/opioidTool/html/opioidTool.html"
+						}
+					}
+				})
 		   /*	.state('app.opioidInfo',{
 					url: "/OpioidInfo",
 					views: {
