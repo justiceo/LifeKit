@@ -67,15 +67,20 @@ NodeJs [Required] for managing external dependencies. Download and install https
 
 Starting the Application
 ------------------------
+You may choose to use npm -g install {package}, so then you can just type gulp or ionic server, rather than their path.
+
 Windows:
 ========
-* Steps below assume NodeJs has been installed and working.
-* Open Git Bash and navigate to the project root directory
-* Install Gulp (the build system and task runner) - type `npm install -g gulp`
-* Install Ionic (the hybrid app framework) - type `npm install -g ionic`
-* Install the apps dependencies - type `npm install`
-* Build application - type `gulp`
-* Launch in browser - type `ionic serve`
+1. Download and Install for your OS (you'll want 64-bit): https://nodejs.org/en/download/
+2. Download and Install git bash: https://git-scm.com/download/win
+3. Open up git bash
+4. git clone https://github.com/justiceo/Dose-Defender.git dose-defender
+5. cd dose-defender
+6. npm install
+7. node_modules/gulp/bin/gulp.js
+8. npm install ionic
+9. node_modules/ionic/bin/ionic server
+10. Tell it localhost or your IP
 
 Linux:
 ======
@@ -99,4 +104,18 @@ Application Design
 * New modules or pages are created by "declaring" them in app.js - in the config section. Specify a name, the end-point (url) and an associated file.
 * The js & html code for the modules are usually located in /www/js/templates/module_name
 * The dashboard module is the default which is loaded on init or when a desired module isn't found
+
+
+Android Environment Setting
+------------------
+1. Setup following:
+    1. Install java greater than 1.8
+    2. Install Android SDK
+    3. Install Android emulator if you want to use it
+2. Type 'ionic hooks add' to solve permission issue
+3. Type 'ionic platform add android' to add android platform
+4. Type 'ionic build android' to build android apk
+5. Launch
+    1. on Device: Type 'ionic run android'
+    2. on Emulator: Type 'ionic emulate android'
 

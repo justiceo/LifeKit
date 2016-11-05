@@ -22,8 +22,8 @@ window.globalVariable = {
         wordpressColor: "#0087BE"
     },// End custom color style variable
     startPage: {
-        url: "/app/dashboard",//Url of start page.
-        state: "app.dashboard"//State name of start page.
+        url: "/app/welcome",//Url of start page.
+        state: "app.welcome"//State name of start page.
     },
     message: {
         errorMessage: "Technical error please try again later." //Default error message.
@@ -296,7 +296,7 @@ angular.module('starter', ['ionic','ngIOS9UIWebViewPatch', 'starter.controllers'
         //Learn more about material theme: https://material.angularjs.org/latest/#/Theming/01_introduction
         $mdThemingProvider
             .theme('default')
-            .primaryPalette('cyan')
+            .primaryPalette('light-blue')
             .accentPalette('blue');
 
         appPrimaryColor = $mdColorPalette[$mdThemingProvider._THEMES.default.colors.primary.name]["500"]; //Use for get base color of theme.
@@ -313,6 +313,12 @@ angular.module('starter', ['ionic','ngIOS9UIWebViewPatch', 'starter.controllers'
         //Learn more about ionNavView at http://ionicframework.com/docs/api/directive/ionNavView/
         //Learn more about  AngularUI Router's at https://github.com/angular-ui/ui-router/wiki
         $stateProvider
+		$stateProvider
+			  .state('map', {
+				url: '/map',
+				templateUrl: 'templates/map.html',
+				controller: 'MapCtrl'
+			  })
             .state('app', {
                 url: "/app",
                 abstract: true,
@@ -604,7 +610,8 @@ angular.module('starter', ['ionic','ngIOS9UIWebViewPatch', 'starter.controllers'
                 cache: false,
                 views: {
                     'menuContent': {
-                        templateUrl: "templates/themes/authentication/html/login.html"
+                        templateUrl: "templates/themes/authentication/html/login.html",
+                        controller: "authCtrl"
                     }
                 }
             })
@@ -613,7 +620,8 @@ angular.module('starter', ['ionic','ngIOS9UIWebViewPatch', 'starter.controllers'
               cache: false,
               views: {
                 'menuContent': {
-                  templateUrl: "templates/themes/authentication/html/splash.html"
+                    templateUrl: "templates/themes/authentication/html/splash.html",
+                    controller: "authCtrl"
                 }
               }
             })
@@ -622,7 +630,8 @@ angular.module('starter', ['ionic','ngIOS9UIWebViewPatch', 'starter.controllers'
                 cache: false,
                 views: {
                     'menuContent': {
-                        templateUrl: "templates/themes/authentication/html/sign-up.html"
+                        templateUrl: "templates/themes/authentication/html/sign-up.html",
+                        controller: "authCtrl"
                     }
                 }
             })
@@ -940,8 +949,8 @@ angular.module('starter', ['ionic','ngIOS9UIWebViewPatch', 'starter.controllers'
                 url: "/androidMapConnect",
                 views: {
                     'menuContent': {
-                        templateUrl: "templates/map-and-location/android-map-connect/html/android-map-connect.html",
-                        controller: "androidMapConnectCtrl"
+                        templateUrl: "templates/map.html",
+                        controller: "MapCtrl"
                     }
                 }
             });// End $stateProvider
@@ -950,3 +959,5 @@ angular.module('starter', ['ionic','ngIOS9UIWebViewPatch', 'starter.controllers'
         $urlRouterProvider.otherwise(window.globalVariable.startPage.url);
 
     });
+	
+	

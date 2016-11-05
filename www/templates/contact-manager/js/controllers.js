@@ -100,7 +100,7 @@ appControllers.controller('contactListCtrl', function ($scope, $http, $filter, $
           }, 2000);
       }
 
-       
+
     // deletecontact is for delete contact.
     // contact(object) = contact object that user want to delete.
     // $event(object) = position of control that user tap.
@@ -187,7 +187,7 @@ appControllers.controller('contactListCtrl', function ($scope, $http, $filter, $
 
     $scope.initialForm();
 
-});// End of contact list controller.
+}   });// End of contact list controller.
 
 
 // Controller of contacts detail page.
