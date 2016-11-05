@@ -62,7 +62,7 @@ appControllers.controller('contactListCtrl', function ($scope, $http, $filter, $
         $timeout(function () {
             // To get all contacts.
             $scope.getContactList(true);
-        }, 2000);
+        }, 1000);
     }; // End initialForm.
 
     // callTo is for using mobile calling.
@@ -81,21 +81,15 @@ appControllers.controller('contactListCtrl', function ($scope, $http, $filter, $
     $scope.getContactList = function (isInit) {
 
         // options for get contacts.
-        var options = {multiple: true};
+        //var options = {multiple: true};
+      $http.get('app-data/contact-list.json')
+        .success(function (sampleList) {
+          $scope.contacts = sampleList;
 
-      $timeout(function () {
-        //get product list from json  at path: www/app-data/contact-list.json
-        $http.get('app-data/contact-list.json')
-          .success(function (sampleList) {
-            // Success retrieve data.
-            // Store user data to $scope.productList.
-            for (var contact = 0; contact < sampleList.length; contact++) {
-              $scope.contacts.push(sampleList[contact]);
-            }
-            // To stop loading progress.
-            $scope.$broadcast('scroll.infiniteScrollComplete');
-          });
-      }, 2000);
+          // To stop loading progress.
+          $scope.$broadcast('scroll.infiniteScrollComplete');
+        });
+
 
       // To stop loading progress.
       if (isInit) {
@@ -106,47 +100,7 @@ appControllers.controller('contactListCtrl', function ($scope, $http, $filter, $
           }, 2000);
       }
 
-        // Calling $cordovaContacts.find to get all contacts.
-        // Parameter :
-        // options = options for get contacts.
-        // $cordovaContacts.find(options).then(
-        //     function (contactList) {
-        //         if(contactList.isEmpty()){
-        //           $timeout(function () {
-        //             //get product list from json  at path: www/app-data/contact-list.json
-        //             $http.get('app-data/contact-list.json')
-        //               .success(function (sampleList) {
-        //                 // Success retrieve data.
-        //                 // Store user data to $scope.productList.
-        //                 for (var contact = 0; contact < sampleList.length; contact++) {
-        //                   $scope.contacts.push(sampleList[contact]);
-        //                 }
-        //                 // To stop loading progress.
-        //                 $scope.$broadcast('scroll.infiniteScrollComplete');
-        //               });
-        //           }, 2000);
-        //         } else {
-        //             // Success retrieve data from mobile contact.
-        //             // It will return all contacts then store it in to $scope.contacts
-        //             $scope.contacts = contactList;
-        //         }
-        //
-        //
-        //         // To stop loading progress.
-        //         if (isInit) {
-        //
-        //             $timeout(function () {
-        //                 $scope.loading = false;
-        //                 jQuery('#contact-list-loading-progress').hide();
-        //             }, 2000);
-        //         }
-        //     },
-        //     function () {
-        //         // Error retrieve data from mobile contact.
-        //         console.log("contact is error");
-        //     });
-    }; // End getcontactList.
-
+       
     // deletecontact is for delete contact.
     // contact(object) = contact object that user want to delete.
     // $event(object) = position of control that user tap.
@@ -180,7 +134,7 @@ appControllers.controller('contactListCtrl', function ($scope, $http, $filter, $
                     $scope.filterText = "";
 
                     // Refresh contact page.
-                    $scope.getcontactList(false);
+                    $scope.getContactList(false);
 
                     // Showing toast for contact Removed !.
                     $mdToast.show({
@@ -226,13 +180,15 @@ appControllers.controller('contactListCtrl', function ($scope, $http, $filter, $
 
         $state.go(targetPage, {
             contactDetail: objectData,
-            actionDelete: (objectData == null ? false : true)
+            actionDelete: (objectData == null ? false : true),
+          actionPlan : true
         });
     }; // End navigateTo.
 
     $scope.initialForm();
 
 });// End of contact list controller.
+
 
 // Controller of contacts detail page.
 appControllers.controller('contactDetailCtrl', function ($mdBottomSheet, $timeout, $mdToast, $scope, $stateParams
@@ -249,9 +205,9 @@ appControllers.controller('contactDetailCtrl', function ($mdBottomSheet, $timeou
             // $stateParams.actionDelete(bool) = status that pass from contact list page.
             $scope.actionDelete = $stateParams.actionDelete;
 
-            //$scope.contact is the variable that store contact data.
-            // $stateParams.contactDetail = contact data that pass from contact list page.
-            $scope.contact = $stateParams.contactDetail;
+
+
+          //console.log($stateParams.contactDetail);
 
             // For initial temp contact data in case of add new contact.
             if ($scope.actionDelete == false) {
@@ -272,7 +228,11 @@ appControllers.controller('contactDetailCtrl', function ($mdBottomSheet, $timeou
                         value: ""
                     }]
                 };
-            }// End initial temp contact data.
+            } else {
+                //$scope.contact is the variable that store contact data.
+                // $stateParams.contactDetail = contact data that pass from contact list page.
+                $scope.contact = $stateParams.contactDetail;
+            }
 
             // If contact don't have phone number it will create a blank array for text box
             // for user to input there number.
@@ -471,6 +431,7 @@ appControllers.controller('contactDetailCtrl', function ($mdBottomSheet, $timeou
             });
 
         };// End deletecontact.
+
 
         // validateRequiredField is for validate the required field.
         // Parameter :

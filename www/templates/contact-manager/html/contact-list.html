@@ -24,19 +24,20 @@
         </a>
     </md-toolbar> <!--end toolbar section-->
 
-    <!--mobile contract list section-->
-    <ion-content id="contact-list-content">
-        <!--list section-->
-        <md-list class="ng-hide" ng-show="!loading">
+    <!--contact list section-->
+
+    <md-content id="contact-list-content">
+      <!--list section-->
+      <md-list class="ng-hide" ng-show="!loading">
 
             <md-list-item class="md-list-item-default" item-height="46px" item-width="100%"
-                          collection-repeat="contact in contacts  |  filter: filterText | orderBy: 'firstName'">
+                          ng-repeat="contact in contacts  |  filter: filterText | orderBy: 'firstName'">
 
                 <span>
                     <i class="ion-android-person"></i>
                 </span>
 
-                <p>
+                <p >
                     {{contact.name.formatted}}
                 </p>
 
@@ -54,7 +55,7 @@
                         </md-menu-item>
                         <md-menu-item>
                             <a class="md-button md-default-theme"
-                               ng-click="navigateTo('app.contactDetail',contact)">
+                               ng-click="navigateTo('app.contactDetail', contact)">
                                 <span class="menu-item-button">View</span>
                             </a>
                         </md-menu-item>
@@ -66,11 +67,15 @@
                     </md-menu-content>
                 </md-menu>
 
+              <md-divider></md-divider>
+
             </md-list-item>
 
         </md-list><!--end list section-->
 
-    </ion-content><!--end mobile contact list section-->
+    </md-content><!--end mobile contact list section-->
+
+
 
     <!--loading progress-->
     <div id="contact-list-loading-progress" class="loading-progress fade-in">

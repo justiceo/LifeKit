@@ -333,7 +333,7 @@ angular.module('starter', ['ionic','ngIOS9UIWebViewPatch', 'starter.controllers'
             .state('app.contactDetail', {
                 url: "/contactDetail",
                 params: {
-                    contractDetail: null,
+                    contactDetail: null,
                     actionDelete: false
                 },
                 views: {

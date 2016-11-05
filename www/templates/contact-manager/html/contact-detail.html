@@ -13,6 +13,14 @@
         </a>
     </ion-nav-buttons><!--end left button on navigation bar-->
 
+    <ion-nav-buttons side="right">
+        <button class="button nav-save-btn button-clear header-item " ng-click="savecontact(contact)">
+              <span>
+                  <i class="ion-checkmark"></i>
+              </span>
+        </button>
+    </ion-nav-buttons><!--end left button on navigation bar-->
+
     <form name="noteForm">
         <ion-content class="header-in-content">
             <!--toolbar section-->
@@ -24,11 +32,6 @@
 
                     <h3> Contact Detail </h3>
                 </div>
-                <a class="md-button md-accent md-fab fab-toolbar-medium"
-                   ng-click="showListBottomSheet($event,contact)"
-                   aria-label="showListBottomSheet">
-                    <i class="ion-android-star"></i>
-                </a>
             </md-toolbar> <!--end toolbar section-->
 
             <!--mobile contact detail section-->
@@ -36,28 +39,18 @@
                 <!--input section-->
                 <md-input-container md-no-float>
                     <i class="ion-android-person"></i>
-                    <input ng-model="contact.name.honorificPrefix" name="firstName" placeholder="Name Prefix">
-                </md-input-container>
-
-                <md-input-container md-no-float>
-                    <i class="ion-android-person"></i>
-                    <input ng-model="contact.name.givenName" name="firstName" required
+                    <input ng-model="contact.name.firstName" name="firstName" required
                            placeholder="* First Name (required)">
                 </md-input-container>
 
                 <md-input-container md-no-float>
                     <i class="ion-android-person"></i>
-                    <input ng-model="contact.name.middleName" name="firstName" placeholder="Middle Name">
+                    <input ng-model="contact.name.middleName" name="middleName" placeholder="Middle Name">
                 </md-input-container>
 
                 <md-input-container md-no-float>
                     <i class="ion-android-person"></i>
-                    <input ng-model="contact.name.familyName" name="firstName" placeholder="Last Name">
-                </md-input-container>
-
-                <md-input-container md-no-float>
-                    <i class="ion-android-person"></i>
-                    <input ng-model="contact.name.honorificSuffix" name="firstName" placeholder="Name Suffix">
+                    <input ng-model="contact.name.familyName" name="familyName" placeholder="Last Name">
                 </md-input-container>
 
                 <md-input-container ng-repeat="number in contact.phoneNumbers" md-no-float>
@@ -91,42 +84,6 @@
         </ion-content>
     </form>
 
-    <!--angular template section-->
-    <script type="text/ng-template" id="contact-actions-template.html">
-        <md-bottom-sheet class="md-list md-has-header">
-            <h1 class="md-bottom-sheet-header">Contact Actions</h1>
-            <!--list section-->
-            <md-list>
-                <md-list-item>
-                    <a class="md-default-theme md-bottom-sheet-list-item" ng-click="addNumber()">
-                        <i class="ion-android-call"></i>
-                        <span>New Number</span>
-                    </a>
-                </md-list-item>
-                <md-list-item>
-                    <a class="md-default-theme md-bottom-sheet-list-item" ng-click="addMail()">
-                        <i class="ion-android-mail"></i>
-                        <span>New Email</span>
-                    </a>
-                </md-list-item>
-                <md-list-item>
-                    <a class="md-default-theme md-bottom-sheet-list-item"
-                       ng-class="{ 'disabled-link': disableSaveBtn}"
-                       ng-click="saveContact(contact,$event)">
-                        <i class="ion-android-list"></i>
-                        <span>Save</span>
-                    </a>
-                </md-list-item>
-                <md-list-item ng-show="actionDelete">
-                    <a class="md-default-theme md-bottom-sheet-list-item"
-                       ng-click="deleteContact(contact,$event)">
-                        <i class="ion-android-delete"></i>
-                        <span>Remove</span>
-                    </a>
-                </md-list-item>
-            </md-list><!--end list section-->
 
-        </md-bottom-sheet>
-    </script><!--end angular template section-->
 
 </ion-view>
