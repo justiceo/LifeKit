@@ -68,17 +68,6 @@
                        class="ion-android-textsms message"></i>
 
                 </md-input-container>
-
-                <md-input-container ng-repeat="email in contact.emails" md-no-float>
-                    <i class="ion-android-mail"></i>
-
-                    <input ng-model="email.value" class="input-mail" name="email" placeholder="Email">
-
-                    <i ng-show="email.value.length > 0"
-                       ng-click="sentEmail(email.value)"
-                       class="ion-android-send mail"></i>
-
-                </md-input-container>
                 <!--end input section-->
             </div> <!--end mobile contact detail section-->
         </ion-content>
