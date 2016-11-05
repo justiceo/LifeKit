@@ -316,8 +316,12 @@ angular.module('starter', ['ionic','ngIOS9UIWebViewPatch', 'starter.controllers'
 		$stateProvider
 			  .state('map', {
 				url: '/map',
-				templateUrl: 'templates/map.html',
-				controller: 'MapCtrl'
+				views: {
+					'menuContent': {
+						templateUrl: 'templates/map.html',
+						controller: 'MapCtrl'
+					}
+				}
 			  })
             .state('app', {
                 url: "/app",
