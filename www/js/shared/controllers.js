@@ -1,4 +1,9 @@
 //This is google maps
+
+var searchFor = ['pharmacy'];
+var map;
+var service; 
+
 appControllers.controller('MapCtrl', function($scope, $state, $cordovaGeolocation) {
   var options = {timeout: 10000, enableHighAccuracy: true};
  
@@ -12,50 +17,43 @@ appControllers.controller('MapCtrl', function($scope, $state, $cordovaGeolocatio
       mapTypeId: google.maps.MapTypeId.ROADMAP
     };
  
-    $scope.map = new google.maps.Map(document.getElementById("map"), mapOptions);
+    map = new google.maps.Map(document.getElementById("map"), mapOptions);
  
 	var yourLocation = new google.maps.Marker({
           position: latLng,
-          map: $scope.map,
+          map: map,
           title: 'Current Location',
 		  animation: google.maps.Animation.DROP
         });
 		
 	var request = {
-	location: latLng,
-	radius: '500',
-	type: 'store'
+		location: latLng,
+		radius: '1000',
+		type: searchFor
 	  };
 	
-    service = new google.maps.places.PlacesService($scope.map);
-    service.textSearch(request, callback, $scope.map);	
+    service = new google.maps.places.PlacesService(map);
+    service.textSearch(request, callback);	
 	  
   }, function(error){
     console.log("Could not get location");
   });
 });
 
-function createMarkers(places, map) {
-  var bounds = new google.maps.LatLngBounds();
-  var placesList = document.getElementById('places');
-  for (var i = 0, place; place = places[i]; i++) {
-    var image = {
-	  map: $scope.map,
-      url: place.icon,
-      size: new google.maps.Size(71, 71),
-      origin: new google.maps.Point(0, 0),
-      anchor: new google.maps.Point(17, 34),
-      scaledSize: new google.maps.Size(25, 25)
-    };
-  }
-}
 
-function callback(results, status, map) {
+function callback(results, status) {
 	//console.log(results);
   if (status == google.maps.places.PlacesServiceStatus.OK) {
+	  
     for (var i = 0; i < results.length; i++) {
       var place = results[i];
-      createMarkers(results[i], map);
+	  console.log(place.name);
+      var store = new google.maps.Marker({
+		  position: place.geometry.location,
+		  map: map,
+		  title: place.name,
+		  animation: google.maps.Animation.DROP
+	});
     }
   }
 }
