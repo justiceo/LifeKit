@@ -29,6 +29,8 @@
 // and put this following code in the access area.
 // <access origin="tel:*" launch-external="yes"/>
 //
+var listContacts = [];
+
 // Controller of contacts list page.
 appControllers.controller('contactListCtrl', function ($scope, $http, $filter, $mdDialog, $timeout, $mdToast, $ionicModal, $state, $mdBottomSheet, $cordovaContacts) {
 
@@ -39,7 +41,7 @@ appControllers.controller('contactListCtrl', function ($scope, $http, $filter, $
         $scope.loading = true;
 
         // $scope.contacts is store contacts data.
-        $scope.contacts = [];
+        $scope.contacts = listContacts;
 
         // $scope.filterText  is the variable that use for searching.
         $scope.filterText = "";
@@ -61,7 +63,11 @@ appControllers.controller('contactListCtrl', function ($scope, $http, $filter, $
 
         $timeout(function () {
             // To get all contacts.
-            $scope.getContactList(true);
+            if (listContacts.length === 0){
+              $scope.getContactList(true);
+            }
+            $scope.stopLoadingProcess(true);
+
         }, 1000);
     }; // End initialForm.
 
@@ -70,35 +76,40 @@ appControllers.controller('contactListCtrl', function ($scope, $http, $filter, $
     // number = number that going to call.
     $scope.callTo = function (number) {
         window.open("tel:" + number);
-    }// End callTo.
+    };// End callTo.
 
     // create new contact
-    $scope.createContact = function(){}
+    //$scope.createContact = function(){}
 
     // getContactList is for get all contacts from mobile.
     // Parameter :
     // IsInit(bool) = for  stop loading progress.
+
     $scope.getContactList = function (isInit) {
 
-        // options for get contacts.
-        //var options = {multiple: true};
-      $http.get('app-data/contact-list.json')
-        .success(function (sampleList) {
-          $scope.contacts = sampleList;
+      // options for get contacts.
+        $http.get('app-data/contact-list.json')
+            .success(function (sampleList) {
+                listContacts = sampleList;
+                $scope.contacts = sampleList;
 
-          // To stop loading progress.
-          $scope.$broadcast('scroll.infiniteScrollComplete');
-        });
+                // To stop loading progress.
+                //$scope.$broadcast('scroll.infiniteScrollComplete');
+            });
 
+        // To stop loading progress.
+        $scope.stopLoadingProcess(isInit);
+    };
 
-      // To stop loading progress.
-      if (isInit) {
-
+    $scope.stopLoadingProcess = function (isInit) {
+        // To stop loading progress.
+        if (isInit) {
           $timeout(function () {
-              $scope.loading = false;
-              jQuery('#contact-list-loading-progress').hide();
+            $scope.loading = false;
+            jQuery('#contact-list-loading-progress').hide();
           }, 2000);
-      }
+        }
+    }
 
 
     // deletecontact is for delete contact.
@@ -187,7 +198,7 @@ appControllers.controller('contactListCtrl', function ($scope, $http, $filter, $
 
     $scope.initialForm();
 
-}   });// End of contact list controller.
+});// End of contact list controller.
 
 
 // Controller of contacts detail page.
@@ -211,9 +222,13 @@ appControllers.controller('contactDetailCtrl', function ($mdBottomSheet, $timeou
 
             // For initial temp contact data in case of add new contact.
             if ($scope.actionDelete == false) {
+                var id = listContacts.length;
                 $scope.contact = {
                     "name": {
-                        givenName: ""
+                        firstName : "",
+                        familyName : "",
+                        middleName : "",
+                        formatted : "",
                     },
                     "phoneNumbers": [{
                         id: 0,
@@ -221,12 +236,7 @@ appControllers.controller('contactDetailCtrl', function ($mdBottomSheet, $timeou
                         type: "mobile",
                         value: ""
                     }],
-                    "emails": [{
-                        id: 0,
-                        pref: false,
-                        type: "home",
-                        value: ""
-                    }]
+                    "id" : id
                 };
             } else {
                 //$scope.contact is the variable that store contact data.
@@ -240,11 +250,6 @@ appControllers.controller('contactDetailCtrl', function ($mdBottomSheet, $timeou
                 $scope.addNumber();
             }
 
-            // If contact don't have email it will create a blank array of text box
-            // for user to input there email.
-            if ($scope.contact.emails == null) {
-                $scope.addMail();
-            }
         }; // End initialForm.
 
         // addNumber for create a blank array of text box for user to input there number.
@@ -265,25 +270,6 @@ appControllers.controller('contactDetailCtrl', function ($mdBottomSheet, $timeou
             }, 400);
 
         };// End addNumber.
-
-        // addMail for create a blank array of text box for user to input there email.
-        $scope.addMail = function () {
-
-            if ($scope.contact.emails == null) {
-                $scope.contact.emails = [{value: ""}];
-            }
-            else {
-                $scope.contact.emails.push({value: ""});
-            }
-
-            $timeout(function () {
-                // To hide $mdBottomSheet
-                $mdBottomSheet.hide();
-                // To hide $mdDialog
-                $mdDialog.hide();
-
-            }, 400);
-        };// End addMail.
 
         // savecontact for saving contact
         // Parameter :
@@ -306,20 +292,6 @@ appControllers.controller('contactDetailCtrl', function ($mdBottomSheet, $timeou
                     $scope.contact.phoneNumbers.splice(index, 1);
                 }
             }
-            // tempMail is  temporary  array of email.
-            var tempMail = [];
-
-            // Create new object by cloning object that present on the view.
-            // For prepare data to save.
-            angular.copy($scope.contact.emails, tempMail);
-
-            // To packing  array of temporary email to save to contact.
-            for (var index = (tempMail.length - 1); index > -1; index--) {
-
-                if (tempMail[index].value == "") {
-                    $scope.contact.emails.splice(index, 1);
-                }
-            }
 
             //mdDialog.show use for show alert box for Confirm to save data.
             $mdDialog.show({
@@ -338,10 +310,25 @@ appControllers.controller('contactDetailCtrl', function ($mdBottomSheet, $timeou
                  // For confirm button to save data.
                 try {
                     // Save contact to mobile contact by calling $cordovaContacts.save(contact)
-                      $cordovaContacts.save(contact).then(function (result) {
-                        }, function (error) {
-                            console.log(error);
-                        });
+                    //  $cordovaContacts.save(contact).then(function (result) {
+                    //      console.log("saved contact " + result);
+                    //    }, function (error) {
+                    //        console.log(error);
+                    //    });
+
+                    // add new contact
+                    var id = contact.id;
+                    if(id === listContacts.length){
+                        $scope.getFormattedName(contact);
+                        listContacts.push(contact);
+                    } else { // update old contact
+                        for (var i = 0, len = listContacts.length; i < len; i++) {
+                            if(listContacts[i].id = id) {
+                                listContacts[i] = contact;
+                            }
+                        }
+                    }
+
                     // Showing toast for save data is success.
                     $mdToast.show({
                         controller: 'toastController',
@@ -379,6 +366,13 @@ appControllers.controller('contactDetailCtrl', function ($mdBottomSheet, $timeou
                 // For cancel button to save data.
             });// End alert box.
         };// End savecontact.
+
+        // getFormattedName
+        $scope.getFormattedName = function(contact) {
+            var lastName = contact.name.lastName != null ? contact.name.lastName : "";
+            contact.name.formatted = contact.name.firstName + " " + lastName;
+            contact.name.formatted.trim();
+        };
 
         // deletecontact for delete contact
         // Parameter :
@@ -438,7 +432,7 @@ appControllers.controller('contactDetailCtrl', function ($mdBottomSheet, $timeou
         // contactForm(object) = contact object that presenting on the view.
         $scope.validateRequiredField = function (contactForm) {
 
-            return ((typeof contactForm.name.givenName) == "undefined" ) || (contactForm.name.givenName.length == 0);
+            return ((typeof contactForm.name.firstName) == "undefined" ) || (contactForm.name.firstName.length == 0);
         };// End validate the required field.
 
         // showListBottomSheet is for showing the bottom sheet.
@@ -460,16 +454,6 @@ appControllers.controller('contactDetailCtrl', function ($mdBottomSheet, $timeou
         $scope.callTo = function (number) {
             window.open("tel:" + number);
         }// End callTo.
-
-        // sentEmail is for send email by calling $cordovaSocialSharing.
-        // Parameter :
-        // email = email of receiver.
-        $scope.sentEmail = function (email) {
-            $cordovaSocialSharing.shareViaEmail(" ", " ", email, "", "", "");
-            // format of sent email by using $cordovaSocialSharing is :
-            //$cordovaSocialSharing.shareViaEmail(message, subject, toArr, ccArr, bccArr,file)
-            // toArr, ccArr and bccArr must be an array, file can be either null, string or array.
-        }; // End sentEmail.
 
         // sentSms is for send message by calling $cordovaSms.
         // Parameter :
