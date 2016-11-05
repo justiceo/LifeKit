@@ -1,14 +1,15 @@
 //This is google maps
 
-var searchFor = ['pharmacy'];
+var searchFor = ["pharmacy"];
 var map;
 var service; 
+var infoWindow;
 
 appControllers.controller('MapCtrl', function($scope, $state, $cordovaGeolocation) {
   var options = {timeout: 10000, enableHighAccuracy: true};
  
   $cordovaGeolocation.getCurrentPosition(options).then(function(position){
- 
+	infowindow = new google.maps.InfoWindow();
     var latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
  
     var mapOptions = {
@@ -39,20 +40,32 @@ appControllers.controller('MapCtrl', function($scope, $state, $cordovaGeolocatio
 });
 
 function callback(results, status) {
-	//console.log(results);
+	console.log(results);
   if (status == google.maps.places.PlacesServiceStatus.OK) {
-	  
     for (var i = 0; i < results.length; i++) {
-      var place = results[i];
-	  console.log(place.name);
-      var store = new google.maps.Marker({
+      makeMarker(results[i]);
+	
+	
+    }
+  }
+}
+
+function makeMarker(place){
+	var marker = new google.maps.Marker({
 		  position: place.geometry.location,
 		  map: map,
 		  title: place.name,
-		  animation: google.maps.Animation.DROP
+		  animation: google.maps.Animation.DROP,
+		  icon: place.icon,
 	});
-    }
-  }
+	
+	google.maps.event.addListener(marker, 'click', function() {
+		  var contentString = "";
+		  //console.log(place);
+		  contentString = contentString + "<b>"+place.name+"</b><br>" + place.formatted_address + "<br>" ;
+          infowindow.setContent(contentString);
+          infowindow.open(map, this);
+        });
 }
 
 //This is Controller for Dialog box.
