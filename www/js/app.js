@@ -936,17 +936,8 @@ angular.module('starter', ['ionic','ngIOS9UIWebViewPatch', 'starter.controllers'
                     }
                 }
             })
-            .state('app.iosMapConnect', {
-                url: "/iosMapConnect",
-                views: {
-                    'menuContent': {
-                        templateUrl: "templates/map-and-location/ios-map-connect/html/ios-map-connect.html",
-                        controller: "iosMapConnectCtrl"
-                    }
-                }
-            })
-            .state('app.androidMapConnect', {
-                url: "/androidMapConnect",
+            .state('app.naloxoneLocator', {
+                url: "/naloxoneLocator",
                 views: {
                     'menuContent': {
                         templateUrl: "templates/map.html",
