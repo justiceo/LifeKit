@@ -13,6 +13,9 @@ var flasher;
 var vibrator;
 var timing = 1000;
 var interval;
+var listContacts = [];
+var start_message = "User is having an overdose, please assist if you can";
+var end_message = "User is ok";
 
 //google map stuff
 var searchFor = ["pharmacy"];
@@ -26,8 +29,8 @@ function doStuff() {
   vibrator.vibrate(1000);
 }
 
-appControllers.controller('emergencyCtrl', function ($scope, $cordovaFlashlight, $cordovaVibration, $cordovaGeolocation, $timeout) {
-
+appControllers.controller('emergencyCtrl', function ($scope, $http, $cordovaFlashlight, $cordovaVibration, $cordovaGeolocation, $cordovaSms, $timeout) {
+	getContactList($scope, $http, $cordovaSms, start_message);
 	//set up looping hell of alarms
 	flasher = $cordovaFlashlight;
 	vibrator = $cordovaVibration;
@@ -36,6 +39,7 @@ appControllers.controller('emergencyCtrl', function ($scope, $cordovaFlashlight,
 	 $scope.$on('$ionicView.beforeLeave', function(){
 		clearInterval(interval);
 		flasher.switchOff();
+		getContactList($scope, $http, $cordovaSms, end_message);
 	});
 	
 	//set up map
@@ -69,8 +73,13 @@ appControllers.controller('emergencyCtrl', function ($scope, $cordovaFlashlight,
   }, function(error){
     console.log("Could not get location");
   });
-  
+
+  $scope.ok = function() {
+	window.location.href = "#/app/dashboard";
+};
+
 });// End androidMapConnectCtrl controller.
+
 
 function callback(results, status) {
 	console.log(results);
@@ -100,3 +109,22 @@ function makeMarker(place){
 }
 
 
+function getContactList($scope, $http, cordovaSms, message) {
+	var listContacts;
+	// options for get contacts.
+	$http.get('app-data/contact-list.json')
+		.success(function (listContacts) {
+		//listContacts = sampleList;
+		for (var i = 0, len = listContacts.length; i < len; i++) {
+			var num = listContacts[i].phoneNumbers[0].value;
+			num = num.replace('-','');
+			$cordovaSms
+      			.send(num, message, options)
+      			.then(function() {
+				alert("Message was sent");
+			}, function(error) {
+				alert("Message was not sent");
+			});
+		}
+	});
+};
