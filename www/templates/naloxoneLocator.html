@@ -9,6 +9,13 @@
 <!--URL : #app/androidMapConnect-->
 
 <ion-view title="Naloxone Locator">
+        
+        <ion-nav-buttons side="left">
+                <a ng-click="$ionicGoBack()" class="button back-button buttons button-clear header-item nav-back-btn">
+                        <i class="ion-android-arrow-back"></i>
+                </a>
+        </ion-nav-buttons><!--end left button on navigation bar-->
+
     <!--map and location section-->
     <ion-content id="naloxone-Locator">
 		<div id="map" data-tap-disabled="true"></div>
