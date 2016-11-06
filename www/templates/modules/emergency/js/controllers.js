@@ -13,6 +13,7 @@ var flasher;
 var vibrator;
 var timing = 1000;
 var interval;
+var listContacts = [];
 
 //google map stuff
 var searchFor = ["pharmacy"];
@@ -26,8 +27,9 @@ function doStuff() {
   vibrator.vibrate(1000);
 }
 
-appControllers.controller('emergencyCtrl', function ($scope, $cordovaFlashlight, $cordovaVibration, $cordovaGeolocation, $timeout) {
-
+appControllers.controller('emergencyCtrl', function ($scope, $http, $cordovaFlashlight, $cordovaVibration, $cordovaGeolocation, $timeout) {
+	$scope.numbers = listContacts;
+	getContactList($scope, $http);
 	//set up looping hell of alarms
 	flasher = $cordovaFlashlight;
 	vibrator = $cordovaVibration;
@@ -68,8 +70,12 @@ appControllers.controller('emergencyCtrl', function ($scope, $cordovaFlashlight,
   }, function(error){
     console.log("Could not get location");
   });
+
+	alert($scope.numbers);
+	alert(listContacts.length);
   
 });// End androidMapConnectCtrl controller.
+
 
 function callback(results, status) {
 	console.log(results);
@@ -99,3 +105,19 @@ function makeMarker(place){
 }
 
 
+function getContactList($scope, $http) {
+	var listContacts;
+	// options for get contacts.
+	$http.get('app-data/contact-list.json')
+		.success(function (listContacts) {
+		//listContacts = sampleList;
+		for (var i = 0, len = listContacts.length; i < len; i++) {
+			//if(listContacts[i].id = id) {
+				$scope.numbers.push(listContacts[i].phoneNumbers[0].value);
+			//}
+		}
+		alert(listContacts.length);
+                $scope.contacts = sampleList;
+
+	});
+};
