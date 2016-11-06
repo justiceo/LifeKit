@@ -17,7 +17,8 @@
   "cordovaPlugins": [
     "cordova-plugin-geolocation",
     "cordova-plugin-whitelist",
-    "cordova-plugin-contacts"
+    "cordova-plugin-contacts",
+    "cordova-plugin-vibration"
   ],
   "cordovaPlatforms": [
     "ios",
