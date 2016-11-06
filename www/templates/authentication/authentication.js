@@ -69,6 +69,14 @@ appControllers.controller('authCtrl', function ($scope, $mdToast, $mdDialog, $ti
         $scope.navigateTo("app.selectUserType");
     };
 
+    $scope.validateUserType = function() {
+        if(!this.choice) {
+            showError("Please select a user type");
+            return;
+        }
+        $scope.navigateTo("app.dashboard");
+    }
+
     function showError(error) {
         $mdToast.show({
             controller: 'toastController',

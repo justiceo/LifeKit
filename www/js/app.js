@@ -413,7 +413,8 @@ angular.module('starter', ['ionic','ngIOS9UIWebViewPatch', 'starter.controllers'
                 views: {
                     'menuContent': {
                         templateUrl: "templates/authentication/html/user-type.html",
-                        controller: "authCtrl"
+                        controller: "authCtrl",
+                        controllerAs: "$ctrl"
                     }
                 }
             })
