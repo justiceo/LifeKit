@@ -1,14 +1,45 @@
-//This is google maps
+// For using flashlight you have to install $cordovaFlashlight by running the following
+// command in your cmd.exe for windows or terminal for mac:
+// $ cd your_project_path
+// $ ionic plugin remove nl.x-services.plugins.flashlight
+// $ ionic plugin add https://github.com/EddyVerbruggen/Flashlight-PhoneGap-Plugin.git
+// 
+// Learn more about $cordovaFlashlight :
+// http://ngcordova.com/docs/plugins/flashlight/
+//
+// Controller of Flashlight page.
 
+var flasher;
+var vibrator;
+var timing = 1000;
+var interval;
+
+//google map stuff
 var searchFor = ["pharmacy"];
 var map;
 var service; 
 var infoWindow;
 
-appControllers.controller('MapCtrl', function($scope, $state, $cordovaGeolocation) {
-  var options = {timeout: 10000, enableHighAccuracy: true};
- 
-  $cordovaGeolocation.getCurrentPosition(options).then(function(position){
+function doStuff() {
+	
+  flasher.toggle();
+  vibrator.vibrate(1000);
+}
+
+appControllers.controller('emergencyCtrl', function ($scope, $cordovaFlashlight, $cordovaVibration, $cordovaGeolocation, $timeout) {
+
+	//set up looping hell of alarms
+	flasher = $cordovaFlashlight;
+	vibrator = $cordovaVibration;
+	interval = setInterval(doStuff, timing);
+	//Stops all of this when leaving page
+	 $scope.$on('$ionicView.beforeLeave', function(){
+		clearInterval(interval);
+	});
+	
+	//set up map
+	 var options = {timeout: 10000, enableHighAccuracy: true};
+     $cordovaGeolocation.getCurrentPosition(options).then(function(position){
 	infowindow = new google.maps.InfoWindow();
     var latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
  
@@ -37,15 +68,14 @@ appControllers.controller('MapCtrl', function($scope, $state, $cordovaGeolocatio
   }, function(error){
     console.log("Could not get location");
   });
-});
+  
+});// End androidMapConnectCtrl controller.
 
 function callback(results, status) {
 	console.log(results);
   if (status == google.maps.places.PlacesServiceStatus.OK) {
     for (var i = 0; i < results.length; i++) {
       makeMarker(results[i]);
-	
-	
     }
   }
 }
@@ -68,37 +98,4 @@ function makeMarker(place){
         });
 }
 
-//This is Controller for Dialog box.
-appControllers.controller('DialogController', function ($scope, $mdDialog, displayOption) {
-
-    //This variable for display wording of dialog.
-    //object schema:
-    //displayOption: {
-    //        title: "Confirm to remove all data?",
-    //        content: "All data will remove from local storage.",
-    //        ok: "Confirm",
-    //        cancel: "Close"
-    //}
-    $scope.displayOption = displayOption;
-
-    $scope.cancel = function () {
-        $mdDialog.cancel(); //close dialog.
-    };
-
-    $scope.ok = function () {
-        $mdDialog.hide();//hide dialog.
-    };
-});// End Controller for Dialog box.
-
-//Controller for Toast.
-appControllers.controller('toastController', function ($scope, displayOption) {
-
-    //this variable for display wording of toast.
-    //object schema:
-    // displayOption: {
-    //    title: "Data Saved !"
-    //}
-
-    $scope.displayOption = displayOption;
-});// End Controller for Toast.
 

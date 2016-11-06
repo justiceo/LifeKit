@@ -14,7 +14,12 @@
     "gulp-util": "^2.2.14",
     "shelljs": "^0.3.0"
   },
-  "cordovaPlugins": [],
+  "cordovaPlugins": [
+    "cordova-plugin-geolocation",
+    "cordova-plugin-whitelist",
+    "cordova-plugin-contacts",
+    "cordova-plugin-vibration"
+  ],
   "cordovaPlatforms": [
     "ios",
     "android"
