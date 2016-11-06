@@ -35,6 +35,7 @@ appControllers.controller('emergencyCtrl', function ($scope, $cordovaFlashlight,
 	//Stops all of this when leaving page
 	 $scope.$on('$ionicView.beforeLeave', function(){
 		clearInterval(interval);
+		flasher.switchOff();
 	});
 	
 	//set up map
