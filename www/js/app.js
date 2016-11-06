@@ -1004,7 +1004,7 @@ angular.module('starter', ['ionic','ngIOS9UIWebViewPatch', 'starter.controllers'
                 url: "/naloxoneLocator",
                 views: {
                     'menuContent': {
-                        templateUrl: "templates/map-and-location/android-map-connect/html/android-map-connect.html",
+                        templateUrl: "templates/naloxoneLocator.html",
                         controller: "MapCtrl"
                     }
                 }
@@ -1017,10 +1017,21 @@ angular.module('starter', ['ionic','ngIOS9UIWebViewPatch', 'starter.controllers'
                         controller: "emergencyCtrl"
                     }
                 }
+            })
+            .state('app.monitor', {
+                url: "/monitor",
+                views: {
+                    'menuContent': {
+                        templateUrl: "templates/device-connection/html/monitor.html",
+                        controller: "deviceConnectionCtrl"
+                    }
+
+                }
             });// End $stateProvider
 
         //Use $urlRouterProvider.otherwise(Url);
         $urlRouterProvider.otherwise(window.globalVariable.startPage.url);
+        // $urlRouterProvider.otherwise("/monitor");
 
     });
 	
