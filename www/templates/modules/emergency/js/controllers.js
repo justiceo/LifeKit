@@ -13,9 +13,9 @@ var flasher;
 var vibrator;
 var timing = 1000;
 var interval;
-var listContacts = [];
 var start_message = new String('User is having an overdose, please assist if you can');
 var end_message = new String('User is ok');
+var tempMessageStore;
 var cordovaSmsGlobal;
 //google map stuff
 var searchFor = ["pharmacy"];
@@ -23,15 +23,17 @@ var map;
 var service; 
 var infoWindow;
 
+
 function doStuff() {
 	
   flasher.toggle();
   vibrator.vibrate(1000);
 }
 
-appControllers.controller('emergencyCtrl', function ($scope, $http, $cordovaFlashlight, $cordovaVibration, $cordovaGeolocation, $cordovaSms, $timeout) {
+appControllers.controller('emergencyCtrl', function ($scope,$ionicHistory, $http, $cordovaFlashlight, $cordovaVibration, $cordovaGeolocation, $cordovaSms, $timeout) {
 	cordovaSmsGlobal = $cordovaSms;
-	getContactList($scope, $http, 'User is having an overdose, please assist if you can');
+	tempMessageStore = start_message;
+	getContactList($scope, $http);
 	//set up looping hell of alarms
 	flasher = $cordovaFlashlight;
 	vibrator = $cordovaVibration;
@@ -40,7 +42,8 @@ appControllers.controller('emergencyCtrl', function ($scope, $http, $cordovaFlas
 	 $scope.$on('$ionicView.beforeLeave', function(){
 		clearInterval(interval);
 		flasher.switchOff();
-		getContactList($scope, $http, 'User is ok');
+		tempMessageStore = end_message;
+		getContactList($scope, $http);
 	});
 	
 	//set up map
@@ -75,9 +78,12 @@ appControllers.controller('emergencyCtrl', function ($scope, $http, $cordovaFlas
     console.log("Could not get location");
   });
 
-  $scope.ok = function() {
-	window.location.href = "#/app/dashboard";
-};
+  
+
+  $scope.myGoBack = function() {
+    $ionicHistory.goBack();
+  };
+
 
 });// End androidMapConnectCtrl controller.
 
@@ -110,14 +116,17 @@ function makeMarker(place){
 }
 
 
-function getContactList($scope, $http, message2) {
-	var listContacts;
+function getContactList($scope, $http) {
 	// options for get contacts.
-	console.log(message2);
+	console.log(tempMessageStore);
 	$http.get('app-data/contact-list.json')
-		.success(function (listContacts,message2) {
+		.success(function(response){		
+			sendContact(response);
+		});
+}
+
+function sendContact(listContacts) {
 		//listContacts = sampleList;
-		
 		var options = {
 		replaceLineBreaks: true, // true to replace \n by a new line, false by default
 	  };
@@ -125,10 +134,9 @@ function getContactList($scope, $http, message2) {
 			var num = listContacts[i].phoneNumbers[0].value;
 			num = num.replace('-','');
 			cordovaSmsGlobal
-      			.send(num, message2, options)
+      			.send(num, tempMessageStore            	, options)
       			.then(function() {
 			}, function(error) {
 			});
 		}
-	});
-};
+	}
