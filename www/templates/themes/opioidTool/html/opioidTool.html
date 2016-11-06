@@ -19,27 +19,27 @@
 		<br>
 		 <form>
 			I am a:
-  			<input type="radio" name="gender" value="male" checked> Male
-  			<input type="radio" name="gender" value="female"> Female<br>
-			<input type="checkbox" name="age" value="age">
+  			<input type="radio" name="gender" id="male" value="male"> Male
+  			<input type="radio" name="gender" id="female" value="female"> Female<br>
+			<input type="checkbox" id="age" value="age">
 			I am aged 16-45 years? 
 			<br>
 			<br>
-			My pain score today is (1-10): <input type="number" name="quantity" min="1" max="10" value="5">
+			My pain score today is (1-10): <input type="number" id="pain" min="1" max="10" value="5">
 			<br>
 			<br>
 			<p> My family has a history of abusing: </p>
-			<input type="checkbox" name="family1" value="alcohol"> Alcohol<br>
-			<input type="checkbox" name="family2" value="drugs"> Illegal Drugs<br>
-			<input type="checkbox" name="family3" value="rx"> Prescription Drugs<br>
+			<input type="checkbox" id="family1" value="alcohol"> Alcohol<br>
+			<input type="checkbox" id="family2" value="drugs"> Illegal Drugs<br>
+			<input type="checkbox" id="family3" value="rx"> Prescription Drugs<br>
 			<br>
 			<p> Personal History: </p>
-			<input type="checkbox" name="personal1" value="alcohol">I have abused Alcohol<br>
-			<input type="checkbox" name="personal2" value="drugs"> I have abused Illegal Drugs<br>
-			<input type="checkbox" name="personal3" value="rx"> I have abused Prescription Drugs<br>
-			<input type="checkbox" name="personal4" value="abuse"> I have a history of Preadolescent Sexual Abuse<br>
-			<input type="checkbox" name="personal5" value="psychological"> I have a history of ADD, OCD, bipolar, or schizophrenia <br>
-			<input type="checkbox" name="personal6" value="depression"> I have a history of Depression<br>
+			<input type="checkbox" id="personal1" value="alcohol">I have abused Alcohol<br>
+			<input type="checkbox" id="personal2" value="drugs"> I have abused Illegal Drugs<br>
+			<input type="checkbox" id="personal3" value="rx"> I have abused Prescription Drugs<br>
+			<input type="checkbox" id="personal4" value="abuse"> I have a history of Preadolescent Sexual Abuse<br>
+			<input type="checkbox" id="personal5" value="psychological"> I have a history of ADD, OCD, bipolar, or schizophrenia <br>
+			<input type="checkbox" id="personal6" value="depression"> I have a history of Depression<br>
 		</form> 
 		<br>
 		<button ion-button ng-click="submit()" round>Submit</button>
