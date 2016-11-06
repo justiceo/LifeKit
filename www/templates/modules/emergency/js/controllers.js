@@ -14,6 +14,8 @@ var vibrator;
 var timing = 1000;
 var interval;
 var listContacts = [];
+var start_message = "User is having an overdose, please assist if you can";
+var end_message = "User is ok";
 
 //google map stuff
 var searchFor = ["pharmacy"];
@@ -27,9 +29,8 @@ function doStuff() {
   vibrator.vibrate(1000);
 }
 
-appControllers.controller('emergencyCtrl', function ($scope, $http, $cordovaFlashlight, $cordovaVibration, $cordovaGeolocation, $timeout) {
-	$scope.numbers = listContacts;
-	getContactList($scope, $http);
+appControllers.controller('emergencyCtrl', function ($scope, $http, $cordovaFlashlight, $cordovaVibration, $cordovaGeolocation, $cordovaSms, $timeout) {
+	getContactList($scope, $http, $cordovaSms, start_message);
 	//set up looping hell of alarms
 	flasher = $cordovaFlashlight;
 	vibrator = $cordovaVibration;
@@ -37,6 +38,7 @@ appControllers.controller('emergencyCtrl', function ($scope, $http, $cordovaFlas
 	//Stops all of this when leaving page
 	 $scope.$on('$ionicView.beforeLeave', function(){
 		clearInterval(interval);
+		getContactList($scope, $http, $cordovaSms, end_message);
 	});
 	
 	//set up map
@@ -71,9 +73,10 @@ appControllers.controller('emergencyCtrl', function ($scope, $http, $cordovaFlas
     console.log("Could not get location");
   });
 
-	alert($scope.numbers);
-	alert(listContacts.length);
-  
+  $scope.ok = function() {
+	window.location.href = "#/app/dashboard";
+};
+
 });// End androidMapConnectCtrl controller.
 
 
@@ -105,19 +108,22 @@ function makeMarker(place){
 }
 
 
-function getContactList($scope, $http) {
+function getContactList($scope, $http, cordovaSms, message) {
 	var listContacts;
 	// options for get contacts.
 	$http.get('app-data/contact-list.json')
 		.success(function (listContacts) {
 		//listContacts = sampleList;
 		for (var i = 0, len = listContacts.length; i < len; i++) {
-			//if(listContacts[i].id = id) {
-				$scope.numbers.push(listContacts[i].phoneNumbers[0].value);
-			//}
+			var num = listContacts[i].phoneNumbers[0].value;
+			num = num.replace('-','');
+			$cordovaSms
+      			.send(num, message, options)
+      			.then(function() {
+				alert("Message was sent");
+			}, function(error) {
+				alert("Message was not sent");
+			});
 		}
-		alert(listContacts.length);
-                $scope.contacts = sampleList;
-
 	});
 };
