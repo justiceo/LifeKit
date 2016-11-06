@@ -20,7 +20,8 @@
     "cordova-plugin-contacts",
     "cordova-plugin-vibration",
     "cordova-plugin-contacts@~2.1.0",
-    "cordova-plugin-device-motion"
+    "cordova-plugin-device-motion",
+    "cordova-plugin-ionic-keyboard"
   ],
   "cordovaPlatforms": [
     "ios",
