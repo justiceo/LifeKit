@@ -361,7 +361,7 @@ angular.module('starter', ['ionic','ngIOS9UIWebViewPatch', 'starter.controllers'
                 },
                 views: {
                     'menuContent': {
-                        templateUrl: "templates/material-user-interface/dashboard/html/dashboard.html",
+                        templateUrl: "templates/dashboard/dashboard/html/dashboard.html",
                         controller: 'dashboardCtrl'
                     }
                 }
@@ -370,7 +370,7 @@ angular.module('starter', ['ionic','ngIOS9UIWebViewPatch', 'starter.controllers'
                 url: "/dashboardSetting",
                 views: {
                     'menuContent': {
-                        templateUrl: "templates/material-user-interface/dashboard/html/dashboard-setting.html",
+                        templateUrl: "templates/dashboard/dashboard/html/dashboard-setting.html",
                         controller: "dashboardSettingCtrl"
                     }
                 }
