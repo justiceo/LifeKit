@@ -19,12 +19,12 @@
     <div class="material-background" id="toggle-menu-left-header">
       <!--menu header section-->
       <div class="menu-left-header">
-        <img class="user-img" src="img/profileAvatar.jpg">
+        <!--<img class="user-img" src="img/LifeKitLogo.jpg">-->
 
         <p>
-          <span class="title">FirstName Last</span>
+          <span class="title">LifeKit</span>
           <br/>
-          <span class="sub-title">Status: Green</span>
+          <span class="sub-title">Status: Naloxone Carrier</span>
         </p>
       </div><!--end menu header section-->
     </div> <!--menu content section-->
@@ -126,21 +126,58 @@
             <span>Device Information</span>
           </div>
         </div>
+		<div class="row menu-item"ng-click="navigateTo('app.naloxoneInfo')">
+          <div class="col-33">
+            <i class="fa fa-info"></i>
+          </div>
+          <div class="col-66">
+            <span>Information about Naloxone</span>
+          </div>
+        </div>
+        <div class="row menu-item" ng-click="navigateTo('app.opioidInfo')">
+          <div class="col-33">
+            <i class="fa fa-info"></i>
+          </div>
+          <div class="col-66">
+            <span>Information about Opioids</span>
+          </div>
+        </div>
+        <div class="row menu-item" ng-click="navigateTo('app.appInfo')">
+          <div class="col-33">
+            <i class="fa fa-info"></i>
+          </div>
+          <div class="col-66">
+            <span>Additional Information about LifeKit</span>
+          </div>
+        </div>
       </div>
 
 
       <!--If device is not Android application will present below code.-->
       <!--It will show animation when selecting row.-->
       <md-list ng-if="!isAndroid">
-        <md-subheader class="md-warn">Application Storage</md-subheader>
-        <md-list-item class="menu-list-item" ng-click="navigateTo('app.contactList')">
-          <i class="fa fa-users"></i>
-          <span>Contact Manager</span>
+        <md-subheader class="md-warn">Additional Information</md-subheader>
+        <md-list-item class="menu-list-item" ng-click="navigateTo('app.naloxoneInfo')">
+          <i class="fa fa-info"></i>
+          <span>How to use Naloxone</span>
         </md-list-item>
-        <md-list-item class="menu-list-item" ng-click="navigateTo('app.notelist')">
-          <i class="fa fa-cube"></i>
-          <span>Local Storage DB</span>
+        <md-list-item class="menu-list-item" ng-click="navigateTo('app.opioidInfo')">
+          <i class="fa fa-info"></i>
+          <span>Information about Opioids</span>
         </md-list-item>
+		  <md-list-item class="menu-list-item" ng-click="navigateTo('app.appInfo')">
+			 <i class="fa fa-info"></i>
+			 <span>How to use the Application</span>
+		  </md-list-item>
+		  <md-subheader class="md-warn">Self-Reporting Screening Tool</md-subheader>
+		  <md-list-item class="menu-list-item" ng-click="navigateTo('app.opioidToolInfo')">
+		   <i class= "fa fa-info"></i>
+		   <span> Opioid Risk Tool Information </span>
+		  </md-list-item>
+		  <md-list-item class="menu-list-item" ng-click="navigateTo('app.opioidTool')">
+		   <i class="fa fa-heart"></i>
+		   <span> Opioid Risk Tool </span>
+		  </md-list-item>
         <md-subheader class="md-warn">Social Network Connect</md-subheader>
         <md-list-item class="menu-list-item" ng-click="navigateTo('app.wordpressLogin')">
           <i class="fa fa-wordpress"></i>
