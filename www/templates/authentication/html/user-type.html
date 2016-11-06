@@ -18,21 +18,13 @@
           <img src="img/app_icon.png" class="md-card-image">
         </div>
 
-		<ion-slide-box on-slide-changed="slideHasChanged($index)">
-		  <ion-slide>
-			<div class="box blue"><img src="img/patient.jpg" style="width:304px;height:228px;"><h1>Overdose Patient</h1><br></div>
-		  </ion-slide>
-		  <ion-slide>
-			<div class="box yellow"><img src="img/naloxone.jpg" style="width:304px;height:228px;"><h1>Naloxone Carrier</h1><br></div>
-		  </ion-slide>
-		</ion-slide-box>
-		<p style="text-align:center"><b>Which are you?</b></p>
-		<ion-radio ng-model="choice" ng-value="'A'">Overdose Patient</ion-radio>
-		<ion-radio ng-model="choice" ng-value="'B'">Naloxone Carrier</ion-radio>
+        <p style="text-align:center; margin-top: 40px"><b>I am a...</b></p>
+        <ion-radio ng-model="choice" ng-value="'A'">Naloxone User</ion-radio>
+        <ion-radio ng-model="choice" ng-value="'B'">Naloxone Carrier</ion-radio>
    
         <!--end input section-->
-        <a class="md-raised social-button md-button md-default-theme material-background">
-          Next
+        <a ng-click="navigateTo('app.dashboard')" style="margin-top: 30px; margin-left: 0" class="md-raised social-button md-button md-default-theme material-background">
+          Complete
         </a>
       </div>
     </ion-content><!--end social sign up section-->

@@ -406,13 +406,13 @@ angular.module('starter', ['ionic','ngIOS9UIWebViewPatch', 'starter.controllers'
                     }
                 }
             })
-			.state('app.typeUserSelect', {
-                url: "/typeUserSelect",
+			.state('app.selectUserType', {
+                url: "/selectUserType",
                 cache: false,
                 views: {
                     'menuContent': {
-                        templateUrl: "templates/typeUserSelect.html",
-                        //controller: "typeUserSelect"
+                        templateUrl: "templates/authentication/html/user-type.html",
+                        controller: "authCtrl"
                     }
                 }
             })

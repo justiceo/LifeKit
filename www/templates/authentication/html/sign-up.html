@@ -12,7 +12,6 @@
     </ion-nav-buttons><!--end left button on navigation bar-->
 
     <!--social sign up section-->
-	<ion-view>
     <ion-content id="social-sign-up-content">
         <div class="app-icon">
           <img src="img/app_icon.png" class="md-card-image">
@@ -37,20 +36,16 @@
         </md-input-container>
         <md-input-container md-no-float="">
           <div>
-            <input class="user-name" placeholder="Mail">
+            <input class="user-name" placeholder="E-Mail">
           </div>
         </md-input-container>
         <md-checkbox aria-label="CheckboxTerms">
           I accept terms and conditions.
         </md-checkbox>
         <!--end input section-->
-        <a href="#/app/typeUserSelect" class="md-raised social-button md-button md-default-theme material-background">
+        <a ng-click="navigateTo('app.selectUserType')"  class="md-raised social-button md-button md-default-theme material-background">
          Next
         </a>
       </div>
-
- 
-
     </ion-content><!--end social sign up section-->
-	</ion-view>
 </ion-view>
