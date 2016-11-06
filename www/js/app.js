@@ -1004,7 +1004,7 @@ angular.module('starter', ['ionic','ngIOS9UIWebViewPatch', 'starter.controllers'
                 url: "/naloxoneLocator",
                 views: {
                     'menuContent': {
-                        templateUrl: "templates/map-and-location/android-map-connect/html/android-map-connect.html",
+                        templateUrl: "templates/naloxoneLocator.html",
                         controller: "MapCtrl"
                     }
                 }
