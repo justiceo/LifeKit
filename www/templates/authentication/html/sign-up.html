@@ -17,35 +17,35 @@
           <img src="img/app_icon.png" class="md-card-image">
         </div>
 
-        <div class="normal-signup">
+        <form class="normal-signup">
         <!--input section-->
         <md-input-container md-no-float="">
           <div>
-            <input class="user-name" placeholder="Username">
+            <input class="user-name" required placeholder="Username" ng-model="username">
           </div>
         </md-input-container>
         <md-input-container md-no-float="">
           <div>
-            <input type="password" class="user-name" placeholder="Password"  ng-model="username">
+            <input type="password" class="user-name" required placeholder="Password"  ng-model="password">
           </div>
         </md-input-container>
         <md-input-container md-no-float="">
           <div>
-            <input type="password" class="user-name" placeholder="Confirm Password"  ng-model="password">
+            <input type="password" class="user-name" required placeholder="Confirm Password"  ng-model="cpassword">
           </div>
         </md-input-container>
         <md-input-container md-no-float="">
           <div>
-            <input class="user-name" placeholder="E-Mail">
+            <input class="user-name" required placeholder="E-Mail" ng-model="email">
           </div>
         </md-input-container>
-        <md-checkbox aria-label="CheckboxTerms">
+        <md-checkbox aria-label="CheckboxTerms" ng-model="accept">
           I accept terms and conditions.
         </md-checkbox>
         <!--end input section-->
-        <a ng-click="navigateTo('app.selectUserType')"  class="md-raised social-button md-button md-default-theme material-background">
+        <a ng-click="validateSignup()" type="submit"  class="md-raised social-button md-button md-default-theme material-background">
          Next
         </a>
-      </div>
+      </form>
     </ion-content><!--end social sign up section-->
 </ion-view>

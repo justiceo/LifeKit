@@ -45,4 +45,44 @@ appControllers.controller('authCtrl', function ($scope, $mdToast, $mdDialog, $ti
         }
     }
 
+    $scope.validateSignup = function() {
+        if(!this.username || this.username == "") {
+            showError("Username is required");
+            return;
+        }
+        if(!this.password || this.password == "") {
+            showError("Password is required");
+            return;
+        }
+        if(!this.cpassword || this.cpassword != this.password) {
+            showError("Passwords must match");
+            return;
+        }
+        if(!this.email || this.email == "") {
+            showError("Email is required");
+            return;
+        }
+        if(!this.accept || this.accept == "") {
+            showError("You must accept the terms and conditions");
+            return;
+        }
+        $scope.navigateTo("app.selectUserType");
+    };
+
+    function showError(error) {
+        $mdToast.show({
+            controller: 'toastController',
+            templateUrl: 'toast.html',
+            hideDelay: 1200,
+            position: 'top',
+            locals: {
+                displayOption: {
+                    title: error
+                }
+            }
+        });
+    }
+
+
+
 });

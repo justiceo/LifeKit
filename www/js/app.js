@@ -402,7 +402,8 @@ angular.module('starter', ['ionic','ngIOS9UIWebViewPatch', 'starter.controllers'
                 views: {
                     'menuContent': {
                         templateUrl: "templates/authentication/html/sign-up.html",
-                        controller: "authCtrl"
+                        controller: "authCtrl",
+                        controllerAs: "$ctrl"
                     }
                 }
             })
