@@ -1004,8 +1004,17 @@ angular.module('starter', ['ionic','ngIOS9UIWebViewPatch', 'starter.controllers'
                 url: "/naloxoneLocator",
                 views: {
                     'menuContent': {
-                        templateUrl: "templates/map.html",
+                        templateUrl: "templates/map-and-location/android-map-connect/html/android-map-connect.html",
                         controller: "MapCtrl"
+                    }
+                }
+            })
+            .state('app.emergency', {
+                url: "/emergency",
+                views: {
+                    'menuContent': {
+                        templateUrl: "templates/modules/emergency/html/emergency.html",
+                        controller: "emergencyCtrl"
                     }
                 }
             });// End $stateProvider
