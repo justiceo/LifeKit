@@ -316,8 +316,12 @@ angular.module('starter', ['ionic','ngIOS9UIWebViewPatch', 'starter.controllers'
 		$stateProvider
 			  .state('map', {
 				url: '/map',
-				templateUrl: 'templates/map.html',
-				controller: 'MapCtrl'
+				views: {
+					'menuContent': {
+						templateUrl: 'templates/map.html',
+						controller: 'MapCtrl'
+					}
+				}
 			  })
             .state('app', {
                 url: "/app",
@@ -632,6 +636,17 @@ angular.module('starter', ['ionic','ngIOS9UIWebViewPatch', 'starter.controllers'
                     'menuContent': {
                         templateUrl: "templates/themes/authentication/html/sign-up.html",
                         controller: "authCtrl"
+                    }
+                }
+            })
+			
+			.state('app.typeUserSelect', {
+                url: "/typeUserSelect",
+                cache: false,
+                views: {
+                    'menuContent': {
+                        templateUrl: "templates/typeUserSelect.html",
+                        //controller: "typeUserSelect"
                     }
                 }
             })

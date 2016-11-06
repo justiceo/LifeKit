@@ -774,10 +774,11 @@ md-sidenav {
 }//menu content section
 //end menu section
 
-//contract list section
-#contract-list-content {
-  margin-top: 164px;
-  .contract-list-item{
+//contact manager section
+//contact list section
+#contact-list-content {
+  margin-top: 55px;
+  .contact-list-item{
     padding: 14px 5px 14px 5px;
     .col-25.icon-user{
       text-align: center;
@@ -806,14 +807,14 @@ md-sidenav {
   }
 }
 
-#contract-list-loading-progress {
+#contact-list-loading-progress {
   top: 56% !important;
-}//end contract list section
+}//end contact list section
 
-//contract detail section
-#contract-details-content {
-  margin-top: 20px;
-  //contract detail input section
+//contact detail section
+#contact-detail-content {
+  margin: 20px;
+  //contact detail input section
   md-input-container {
     i {
       font-size: 22px;
@@ -848,16 +849,16 @@ md-sidenav {
         width: 64%;
       }
     }
-  }//end contract detail input section
+  }//end contact detail input section
 
-  //contract switch section
+  //contact switch section
   md-switch {
     font-size: 16px;
     margin-left: 30px;
     margin-top: 0;
-  }//end contract switch section
+  }//end contact switch section
 
-}//end contract detail section
+}//end contact detail section
 
 //note list section
 #note-list-content {

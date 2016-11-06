@@ -1,7 +1,7 @@
 [
   {
     "name" : {
-      "givenName" : "Bob",
+      "firstName" : "Bob",
       "familyName" : "Dylan",
       "middleName" : "",
       "formatted" : "Bob Dylan"
@@ -12,12 +12,7 @@
       "type": "mobile",
       "value": "265-342-5447"
     }],
-    "emails": [{
-      "id": 0,
-      "pref": false,
-      "type": "home",
-      "value": "bob.dylan@gmail.com"
-    }]
+    "id" : 0
   },
   {
     "name" : {
@@ -32,12 +27,7 @@
       "type": "mobile",
       "value": "265-982-3251"
     }],
-    "emails": [{
-      "id": 1,
-      "pref": false,
-      "type": "home",
-      "value": "lily.s@gmail.com"
-    }]
+    "id" : 1
   },
   {
     "name" : {
@@ -52,11 +42,6 @@
       "type": "mobile",
       "value": "215-342-0934"
     }],
-    "emails": [{
-      "id": 2,
-      "pref": false,
-      "type": "home",
-      "value": "mike.03.99@gmail.com"
-    }]
+    "id" : 2
   }
 ]
