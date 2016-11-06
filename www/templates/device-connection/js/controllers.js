@@ -14,7 +14,7 @@ appControllers.controller('deviceConnectionCtrl', function($scope, $interval, $l
 		$scope.z = acceleration.z;
 		$scope.timestamp = acceleration.timestamp;
         $scope.power = Math.sqrt( $scope.x*$scope.x + $scope.y*$scope.y + $scope.z*$scope.z );
-        if($scope.power > 11) {
+        if($scope.power > 13) {
             $location.path(forwardAddress);
         }
 	    isConnected = true;
@@ -53,7 +53,7 @@ appControllers.controller('deviceConnectionCtrl', function($scope, $interval, $l
         // });
  
         cordova.plugins.backgroundMode.enable();
-        job = $interval($scope.getMotion, 1000);
+        job = $interval($scope.getMotion, 100);
     };
 
     $scope.disconnectDevice = function() {

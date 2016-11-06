@@ -35,6 +35,18 @@
 
         <!--Below code it will disable animation to better performance-->
         <div ng-if="!isAnimated" class="menu-list">
+			<md-subheader class="md-warn">Monitoring</md-subheader>
+            <div class="row menu-item" ng-click="navigateTo('app.monitor')">
+                <div class="col-25">
+                    <i class="fa fa-info"></i>
+                </div>
+                <div class="col-50">
+                    <span>Monitor</span>
+                </div>
+                <div class="col-25 menu-more">
+                    <i class="ion-android-more-vertical"></i>
+                </div>
+            </div>
 				<md-subheader class="md-warn">Contacts </md-subheader>
             <div class="row menu-item" ng-click="navigateTo('app.contactList')">
                 <div class="col-25">
@@ -133,18 +145,6 @@
                 </div>
                 <div class="col-50">
                     <span>Opioid Risk Tool</span>
-                </div>
-                <div class="col-25 menu-more">
-                    <i class="ion-android-more-vertical"></i>
-                </div>
-            </div>
-            <md-subheader class="md-warn">Device Connection</md-subheader>
-            <div class="row menu-item" ng-click="navigateTo('app.monitor')">
-                <div class="col-25">
-                    <i class="fa fa-info"></i>
-                </div>
-                <div class="col-50">
-                    <span>Monitor</span>
                 </div>
                 <div class="col-25 menu-more">
                     <i class="ion-android-more-vertical"></i>
