@@ -1,6 +1,7 @@
 @import "./ionic.app.scss";
 @import "www/scss/ionic.app.scss";
 //global variable section
+
 //colors variable section
 $color_white: white;
 $color_gray: gray;
@@ -38,7 +39,7 @@ $color_border_menu_dashboard: rgba(225, 225, 225, 0.69);
 $color_news_header: #2882D8;
 $color_info_header_orange: #f8b816; //dark orange
 $color_info_header_blue: #4d9ace; //light blue
-$color_menu_blue: #3b7299; //dark blue
+
 
 //fonts variable section
 $font_roboto_draft: RobotoDraft;
@@ -220,13 +221,6 @@ ion-header-bar {
     font-size: 21px;
   }
 }//end back button navigation bar
-
-.nav-save-btn {
-  color: $color_white;
-}
-.nav-save-btn.activated {
-  color: #4cd964;
-}
 
 .progress-circular.spinner.spinner-android svg {
   width: 52px;
@@ -692,12 +686,12 @@ md-sidenav {
 //menu header section
 #toggle-menu-left-header {
   height: 154px;
-  background: $color_menu_blue;
+  background: $url_background_cover_pixels repeat 0;
   background-position-x: 8px;
   color: $color_white;
   box-shadow: 0 0 0 0 $color_black_14, 0 1px 10px 0 $color_black_14, 0 2px
 4px -1px $color_black_20;
-  //background-repeat: repeat;
+  background-repeat: repeat;
   position: relative;
   background-size: 80%;
   z-index: 9000;
@@ -710,8 +704,9 @@ md-sidenav {
     margin: 0 0 0 16px;
 
     img.user-img {
+      border-radius: 50%;
       width: 62px;
-      height: 45px;
+      height: 62px;
       margin-bottom: 2px;
     }
 
@@ -719,11 +714,11 @@ md-sidenav {
       font-weight: bolder;
 
       span.title {
-        font-size: 20px;
+        font-size: 16px;
       }
 
       span.sub-title {
-        font-size: 14px;
+        font-size: 12px;
       }
     }
   }
@@ -738,8 +733,7 @@ md-sidenav {
       background-color: transparent !important;
       div.md-subheader-inner{
         background-color: transparent !important;
-      color: $color_info_header_orange; 
-		}
+      }
     }
 
     md-list-item.menu-list-item {
@@ -779,11 +773,10 @@ md-sidenav {
 }//menu content section
 //end menu section
 
-//contact manager section
-//contact list section
-#contact-list-content {
-  margin-top: 55px;
-  .contact-list-item{
+//contract list section
+#contract-list-content {
+  margin-top: 164px;
+  .contract-list-item{
     padding: 14px 5px 14px 5px;
     .col-25.icon-user{
       text-align: center;
@@ -812,14 +805,14 @@ md-sidenav {
   }
 }
 
-#contact-list-loading-progress {
+#contract-list-loading-progress {
   top: 56% !important;
-}//end contact list section
+}//end contract list section
 
-//contact detail section
-#contact-detail-content {
-  margin: 20px;
-  //contact detail input section
+//contract detail section
+#contract-details-content {
+  margin-top: 20px;
+  //contract detail input section
   md-input-container {
     i {
       font-size: 22px;
@@ -854,16 +847,16 @@ md-sidenav {
         width: 64%;
       }
     }
-  }//end contact detail input section
+  }//end contract detail input section
 
-  //contact switch section
+  //contract switch section
   md-switch {
     font-size: 16px;
     margin-left: 30px;
     margin-top: 0;
-  }//end contact switch section
+  }//end contract switch section
 
-}//end contact detail section
+}//end contract detail section
 
 //note list section
 #note-list-content {
@@ -1721,8 +1714,7 @@ md-sidenav {
 #dashboard-content {
   margin-top: 164px;
   .menu-more {
-   color:$color_info_header_orange; 
-	text-align: right;
+    text-align: right;
   }
   .menu-list {
     padding-top: 5px;
@@ -2370,11 +2362,8 @@ md-sidenav {
         color: $color_gray;
       }
 		img {
-			position: relative;
-			margin:auto;
-			display:block;
-			width: 150px;
-			height: 100px;
+			width: 100%;
+			height: 100%;
 			margin-bottom: 10px;
 			margin-top: 10px;
 		 }
