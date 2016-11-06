@@ -1,0 +1,26 @@
+<ion-view view-title="Monitor">
+    <!-- <ion&#45;header&#45;bar class="bar&#45;stable"> -->
+    <!--     <h1 class="title">Monitor</h1> -->
+    <!-- </ion&#45;header&#45;bar> -->
+    <!--  -->
+    <ion-content>
+        <div>
+            <p>Status: {{getStatus()}}<p>
+            <p>x value: {{x}}<p>
+            <p>y value: {{y}}<p>
+            <p>z value: {{z}}<p>
+            <p>timestamp: {{timestamp}}<p>
+            <p>power: {{power}}<p>
+        </div>
+
+        <div>
+            <button class="button button-positive" ng-click="connectDevice()">
+                Connect
+            </button>
+            <button class="button button-positive" ng-click="disconnectDevice()">
+                Disconnect
+            </button>
+        </div>
+    </ion-content>
+</ion-view>
+
