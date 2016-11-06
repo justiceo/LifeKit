@@ -14,9 +14,9 @@ var vibrator;
 var timing = 1000;
 var interval;
 var listContacts = [];
-var start_message = "User is having an overdose, please assist if you can";
-var end_message = "User is ok";
-
+var start_message = new String('User is having an overdose, please assist if you can');
+var end_message = new String('User is ok');
+var cordovaSmsGlobal;
 //google map stuff
 var searchFor = ["pharmacy"];
 var map;
@@ -30,7 +30,8 @@ function doStuff() {
 }
 
 appControllers.controller('emergencyCtrl', function ($scope, $http, $cordovaFlashlight, $cordovaVibration, $cordovaGeolocation, $cordovaSms, $timeout) {
-	getContactList($scope, $http, $cordovaSms, start_message);
+	cordovaSmsGlobal = $cordovaSms;
+	getContactList($scope, $http, 'User is having an overdose, please assist if you can');
 	//set up looping hell of alarms
 	flasher = $cordovaFlashlight;
 	vibrator = $cordovaVibration;
@@ -39,7 +40,7 @@ appControllers.controller('emergencyCtrl', function ($scope, $http, $cordovaFlas
 	 $scope.$on('$ionicView.beforeLeave', function(){
 		clearInterval(interval);
 		flasher.switchOff();
-		getContactList($scope, $http, $cordovaSms, end_message);
+		getContactList($scope, $http, 'User is ok');
 	});
 	
 	//set up map
@@ -109,21 +110,24 @@ function makeMarker(place){
 }
 
 
-function getContactList($scope, $http, cordovaSms, message) {
+function getContactList($scope, $http, message2) {
 	var listContacts;
 	// options for get contacts.
+	console.log(message2);
 	$http.get('app-data/contact-list.json')
-		.success(function (listContacts) {
+		.success(function (listContacts,message2) {
 		//listContacts = sampleList;
+		
+		var options = {
+		replaceLineBreaks: true, // true to replace \n by a new line, false by default
+	  };
 		for (var i = 0, len = listContacts.length; i < len; i++) {
 			var num = listContacts[i].phoneNumbers[0].value;
 			num = num.replace('-','');
-			$cordovaSms
-      			.send(num, message, options)
+			cordovaSmsGlobal
+      			.send(num, message2, options)
       			.then(function() {
-				alert("Message was sent");
 			}, function(error) {
-				alert("Message was not sent");
 			});
 		}
 	});

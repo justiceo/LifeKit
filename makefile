@@ -19,5 +19,6 @@ init:
 	cordova plugin add cordova-plugin-whitelist
 	cordova plugin add cordova-plugin-ionic-keyboard
 	cordova plugin add https://github.com/katzer/cordova-plugin-background-mode.git
+	cordova plugin add https://github.com/cordova-sms/cordova-sms-plugin.git
 	./node_modules/gulp/bin/gulp.js
 
