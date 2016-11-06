@@ -912,7 +912,8 @@ angular.module('starter', ['ionic','ngIOS9UIWebViewPatch', 'starter.controllers'
 					url:"/opioidTool",
 					views: {
 						'menuContent': {
-							 templateUrl: "templates/themes/opioidTool/html/opioidTool.html"
+							 templateUrl: "templates/themes/opioidTool/html/opioidTool.html",
+							 controller: "quizCtrl"
 						}
 					}
 				})
