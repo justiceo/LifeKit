@@ -1,6 +1,6 @@
 
-Dose Defender : Your Opioid Buddy
-=================================
+LifeKit : Locate.Naloxone.Now
+=============================
 
 A hybrid mobile app to help curb the increasing number of deaths from opioid overdose.
 [Add more to this later]
