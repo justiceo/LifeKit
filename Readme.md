@@ -8,9 +8,22 @@ Welcome Screen           |  Main Menu
 :-------------------------:|:-------------------------:
 ![Dashboard image] (/README/1\ (8).jpg?raw=true "LifeKit Dashboard");  |  ![Dashboard image] (/README/1\ (21).jpg?raw=true "LifeKit Dashboard");
 
-Welcome Screen           |  Main Menu
+Sign Up           |  Choose Type of User
 :-------------------------:|:-------------------------:
-![Dashboard image] (/README/1\ (8).jpg?raw=true "LifeKit Dashboard");  |  ![Dashboard image] (/README/1\ (21).jpg?raw=true "LifeKit Dashboard");
+![Dashboard image] (/README/1\ (3).jpg?raw=true "LifeKit Dashboard");  |  ![Dashboard image] (/README/1\ (4).jpg?raw=true "LifeKit Dashboard");
+
+Emergency Contact Manager           |  Overdose Risk Assessment Tool
+:-------------------------:|:-------------------------:
+![Dashboard image] (/README/1\ (41).jpg?raw=true "LifeKit Dashboard");  |  ![Dashboard image] (/README/1\ (27).jpg?raw=true "LifeKit Dashboard");
+
+Bystander Emergency Alert + Overdose Detection           |  Emergency Contact Text Notification with Location
+:-------------------------:|:-------------------------:
+![Dashboard image] (/README/1\ (31).jpg?raw=true "LifeKit Dashboard");  |  ![Dashboard image] (/README/1\ (23).jpg?raw=true "LifeKit Dashboard");
+
+Pin Point Patient Location with Google Maps           |  Naloxone Carrier Locator
+:-------------------------:|:-------------------------:
+![Dashboard image] (/README/1\ (33).jpg?raw=true "LifeKit Dashboard");  |  ![Dashboard image] (/README/1\ (36).jpg?raw=true "LifeKit Dashboard");
+
 
 Features
 --------
