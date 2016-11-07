@@ -4,9 +4,13 @@ LifeKit : Locate.Naloxone.Now
 
 A hybrid mobile app to help curb the increasing number of deaths from opioid overdose.![
 
-Solarized dark             |  Solarized Ocean
+Welcome Screen           |  Main Menu
 :-------------------------:|:-------------------------:
-![Dashboard image] (/README/z\ (8).jpg?raw=true "LifeKit Dashboard");  |  ![Dashboard image] (/README/z\ (21).jpg?raw=true "LifeKit Dashboard");
+![Dashboard image] (/README/1\ (8).jpg?raw=true "LifeKit Dashboard");  |  ![Dashboard image] (/README/1\ (21).jpg?raw=true "LifeKit Dashboard");
+
+Welcome Screen           |  Main Menu
+:-------------------------:|:-------------------------:
+![Dashboard image] (/README/1\ (8).jpg?raw=true "LifeKit Dashboard");  |  ![Dashboard image] (/README/1\ (21).jpg?raw=true "LifeKit Dashboard");
 
 Features
 --------
