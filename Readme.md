@@ -25,7 +25,7 @@ Pin Point Patient Location with Google Maps           |  Naloxone Carrier Locato
 ![Dashboard image] (/README/1\ (33).jpg?raw=true "LifeKit Dashboard");  |  ![Dashboard image] (/README/1\ (36).jpg?raw=true "LifeKit Dashboard");
 
 Auto Overdose Detection with Accelerometer           
-:-------------------------:|:-------------------------:
+:-------------------------:
 ![Dashboard image] (/README/1\ (40).jpg?raw=true "LifeKit Dashboard"); 
 
 Features
