@@ -1,7 +1,3 @@
-<!--View Information-->
-<!--View name : NEWS Feed-->
-<!--State name : app.newsFeed-->
-<!--URL : #app/newsFeed-->
 
 <ion-view title="Self-Reporting Screening Tool">
     <!--news feed section-->
@@ -10,22 +6,22 @@
         <div class="opioid-item">
             <div class="row detail">
                 <div class="col">
-                    <h2>
+                    <h1>
                         Opioid Risk Tool
-                    </h2>
+                    </h1>
                    <p class="content">
 							Please choose the options that apply.
                   </p>
 		<br>
-		 <form>
+		 <form> 
 			I am a:
   			<input type="radio" name="gender" id="male" value="male"> Male
   			<input type="radio" name="gender" id="female" value="female"> Female<br>
 			<input type="checkbox" id="age" value="age">
-			I am aged 16-45 years? 
+			I am aged 16 - 45 years? 
 			<br>
 			<br>
-			My pain score today is: <input type="range" name="pain" id="pain" min="1" max="10" step="1" value="5">
+			My pain score today is: <input type="range" name="pain" id="pain" min="1" max="10" step="1" value="1">
 			<br>
 			<br>
 			<p> My family has a history of abusing: </p>
@@ -42,7 +38,11 @@
 			<input type="checkbox" id="personal6" value="depression"> I have a history of Depression<br>
 		</form> 
 		<br>
-		<button ion-button ng-click="submit()" round>Submit</button>
+		<div>
+	<!--	<button ion-button ng-click="submit()"	round> <h3
+style=width=100%;>Submit</h3>  </button>-->
+			<button ion-button ng-click="submit()"> Submit </button>
+		</div>
                 </div>
             </div>
         </div>

@@ -2915,3 +2915,52 @@ $color_black_098, 0px 1px 5px 0px $color_black_084;
 .md-button.md-accent.md-fab.fab-toolbar-medium {
   right: 0 !important;
 }
+
+//info feed section
+#opioid-tool-content {
+  background-color: $color_black_haze_approx;
+  .opioid-item {
+    border-top: 1px solid $color_border_menu_dashboard;
+    background-color: $color_white;
+    margin-bottom: 20px;
+
+    //detail section
+    .detail {
+      padding: 5px 20px 4px 20px;
+      h1 {
+        text-align: center;
+        font-size: 20px;
+        font-weight: 500;
+        color: $color_info_header_orange;
+      }
+      h2{
+        text-align: center;
+        font-size: 20px;
+        font-weight: 500;
+        color: $color_info_header_blue;
+      }
+      p.content {
+        font-size: 14px;
+        color: $color_black;
+        text-align: center;
+		}
+      img {
+         position: relative;
+         margin:auto;
+         display:block;
+         width: 150px;
+         height: 100px;
+         margin-bottom: 10px;
+         margin-top: 10px;
+       }
+		form {
+			text-align: center;
+		}	
+		button{
+  			margin:auto;
+  			display:block;
+		}
+    }//end detail section
+  }
+}//end info section
+
