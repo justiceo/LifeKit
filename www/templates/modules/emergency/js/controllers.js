@@ -13,7 +13,7 @@ var flasher;
 var vibrator;
 var timing = 1000;
 var interval;
-var start_message = new String('User is having an overdose, please assist if you can');
+var start_message = new String('User is having an overdose. If you can, please assist at: ');
 var end_message = new String('User is ok');
 var tempMessageStore;
 var cordovaSmsGlobal;
@@ -23,6 +23,8 @@ var map;
 var service; 
 var infoWindow;
 
+var latLngGlobal;
+
 
 function doStuff() {
 	
@@ -31,27 +33,12 @@ function doStuff() {
 }
 
 appControllers.controller('emergencyCtrl', function ($scope,$ionicHistory, $http, $cordovaFlashlight, $cordovaVibration, $cordovaGeolocation, $cordovaSms, $timeout) {
-	cordovaSmsGlobal = $cordovaSms;
-	tempMessageStore = start_message;
-	getContactList($scope, $http);
-	//set up looping hell of alarms
-	flasher = $cordovaFlashlight;
-	vibrator = $cordovaVibration;
-	interval = setInterval(doStuff, timing);
-	//Stops all of this when leaving page
-	 $scope.$on('$ionicView.beforeLeave', function(){
-		clearInterval(interval);
-		flasher.switchOff();
-		tempMessageStore = end_message;
-		getContactList($scope, $http);
-	});
-	
 	//set up map
 	 var options = {timeout: 10000, enableHighAccuracy: true};
      $cordovaGeolocation.getCurrentPosition(options).then(function(position){
 	infowindow = new google.maps.InfoWindow();
-    var latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
- 
+    latLngGlobal = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+	var latLng = latLngGlobal;
     var mapOptions = {
       center: latLng,
       zoom: 15,
@@ -66,6 +53,34 @@ appControllers.controller('emergencyCtrl', function ($scope,$ionicHistory, $http
 		  animation: google.maps.Animation.DROP
         });
 		
+		var lat = latLngGlobal.lat();
+		var lng = latLngGlobal.lng();
+		
+		//Sms once the location has been found
+		cordovaSmsGlobal = $cordovaSms;
+		var xmlhttp = new XMLHttpRequest();
+		var googleMapUrl = "http://maps.google.com/maps?q=loc:"+lat+","+lng;
+		var url = "http://tinyurl.com/api-create.php?url="+ googleMapUrl;
+		xmlhttp.onreadystatechange = function() {
+			if (this.readyState == 4 && this.status == 200) {
+				tempMessageStore = start_message +  this.responseText;
+				getContactList($scope, $http);
+			}
+		};
+		xmlhttp.open("GET", url, true);
+		xmlhttp.send();
+		//set up looping hell of alarms
+		flasher = $cordovaFlashlight;
+		vibrator = $cordovaVibration;
+		interval = setInterval(doStuff, timing);
+		//Stops all of this when leaving page
+		 $scope.$on('$ionicView.beforeLeave', function(){
+		clearInterval(interval);
+		flasher.switchOff();
+		tempMessageStore = end_message;
+		getContactList($scope, $http);
+	});
+		
 	var request = {
 		location: latLng,
 		radius: '1000',
@@ -77,6 +92,10 @@ appControllers.controller('emergencyCtrl', function ($scope,$ionicHistory, $http
   }, function(error){
     console.log("Could not get location");
   });
+  
+  //alarms and sms
+	
+	
 
   
 
@@ -134,7 +153,7 @@ function sendContact(listContacts) {
 			var num = listContacts[i].phoneNumbers[0].value;
 			num = num.replace('-','');
 			cordovaSmsGlobal
-      			.send(num, tempMessageStore            	, options)
+      			.send(num, tempMessageStore, options)
       			.then(function() {
 			}, function(error) {
 			});
