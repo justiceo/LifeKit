@@ -8,6 +8,8 @@ plugins/
 www/build/
 www/css/
 res/
+README/
 
 *.swp
 *.bak
+
