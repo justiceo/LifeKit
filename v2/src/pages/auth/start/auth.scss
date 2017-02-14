@@ -1,0 +1,98 @@
+.login {
+  .margin-t {
+    margin-top: 30px;
+  }
+
+  .margin-t-sm {
+    margin-top: 15px;
+  }
+
+  .margin-auto {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+  }
+
+  ion-item.item {
+    background: transparent;
+  }
+
+  .padding-md {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+
+  .padding-t-md {
+    padding-top: 40px;
+  }
+
+  .forgot {
+    font-size: 90%;
+  }
+
+  .logo {
+    width: 50px;
+    margin: 30px;
+  }
+  .disclaimer {
+    font-size: 70%;
+  }
+}
+
+ion-content.login {
+
+  //background: #efefef;
+  position: absolute;
+
+  animation: colorchange 50s; /* animation-name followed by*/
+  animation-iteration-count: infinite;
+  /* you could also use milliseconds (ms) or something like 2.5s */
+  -webkit-animation: colorchange 50s; /* Chrome and Safari */
+  -webkit-animation-iteration-count: infinite;
+
+  @keyframes colorchange {
+    0% {
+      background: #FFF1DC;
+    }
+    25% {
+      background: #D0F4DA;
+    }
+    50% {
+      background: #D8E0F5;
+    }
+    75% {
+      background: #FFF9D9;
+    }
+    100% {
+      background: #FFE0EF;
+    }
+  }
+
+  @-webkit-keyframes colorchange /* Safari and Chrome - necessary duplicate */
+  {
+    0% {
+      background: #FFF1DC;
+    }
+    25% {
+      background: #D0F4DA;
+    }
+    50% {
+      background: #D8E0F5;
+    }
+    75% {
+      background: #FFF9D9;
+    }
+    100% {
+      background: #FFE0EF;
+    }
+  }
+}
+
+ion-footer.login {
+  padding-bottom: 40px;
+  background: rgba(255, 255, 255, 0.9);
+
+  &.transparent, &::before {
+    background: transparent
+  }
+}

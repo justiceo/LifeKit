@@ -1,0 +1,34 @@
+<div class="wrapper">
+        <ion-content class="login">
+                <div class="logo">
+                        <img src="assets/img/appicon.svg" alt="Ionic logo">
+                </div>
+        </ion-content>
+        <ion-footer class="login">
+                <form #loginForm="ngForm" class="padding-t-md" novalidate>
+                        <div class="padding-md">
+                                <ion-item>
+                                        <ion-label stacked color="primary">Username</ion-label>
+                                        <ion-input [(ngModel)]="login.username" (ngModelChange)="activateButton()"
+                                                   name="username" type="text" #username="ngModel" spellcheck="false"
+                                                   autocapitalize="off"
+                                                   required>
+                                        </ion-input>
+                                </ion-item>
+                                <ion-item margin-bottom>
+                                        <ion-label stacked color="primary">Password</ion-label>
+                                        <ion-input [(ngModel)]="login.password" (ngModelChange)="activateButton()"
+                                                   name="password" type="password" #password="ngModel" required>
+                                        </ion-input>
+                                </ion-item>
+                        </div>
+
+                        <button ion-button (click)="onLogin(loginForm)" type="submit" round outline
+                                [disabled]="!modelOk" class="margin-auto margin-t">Sign Up
+                        </button>
+                        <p text-center class="margin-auto margin-t-sm disclaimer">By joining, you accept our <a>Terms
+                                and Conditions</a></p>
+                </form>
+                <p text-cetner></p>
+        </ion-footer>
+</div>
