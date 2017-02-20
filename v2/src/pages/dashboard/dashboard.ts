@@ -1,4 +1,5 @@
 import {Component} from "@angular/core";
+import {HeaderColor} from "ionic-native";
 import {HomePage} from "../home/home";
 import {AboutPage} from "../about/about";
 import {ContactPage} from "../contacts/contact";
@@ -14,6 +15,6 @@ export class Dashboard {
     tab3Root:any = ContactPage;
 
     constructor() {
-
+        HeaderColor.tint("#ffcc00");
     }
 }
