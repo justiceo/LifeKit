@@ -1,13 +1,13 @@
 import {Component} from "@angular/core";
 import {Platform} from "ionic-angular";
 import {StatusBar, Splashscreen} from "ionic-native";
-import {StartPage} from "../pages/auth/start/start";
+import {Dashboard} from "../pages/dashboard/dashboard";
 
 @Component({
     templateUrl: 'app.html'
 })
 export class MyApp {
-    rootPage = StartPage;
+    rootPage = Dashboard;
 
     constructor(platform:Platform) {
         platform.ready().then(() => {
