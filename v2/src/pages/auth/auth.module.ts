@@ -1,27 +1,33 @@
-import {NgModule} from "@angular/core";
-import {CommonModule} from "@angular/common";
+import {NgModule, ErrorHandler} from "@angular/core";
+import {IonicModule, IonicErrorHandler} from "ionic-angular";
 import {LoginPage} from "./login/login";
 import {SignUpPage} from "./signup/signup";
 import {StartPage} from "./start/start";
+import {ResetPage} from "./login/reset";
 
 @NgModule({
-    imports: [CommonModule],
+    imports: [
+        IonicModule
+    ],
     declarations: [
         LoginPage,
         SignUpPage,
-        StartPage
+        StartPage,
+        ResetPage
     ],
     exports: [
-        CommonModule,
         LoginPage,
         SignUpPage,
-        StartPage
+        StartPage,
+        ResetPage
     ],
     entryComponents: [
         LoginPage,
         SignUpPage,
-        StartPage
-    ]
+        StartPage,
+        ResetPage
+    ],
+    providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}]
 })
-export class Auth {
+export class AuthModule {
 }
