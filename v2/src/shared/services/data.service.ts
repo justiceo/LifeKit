@@ -1,6 +1,7 @@
 import {Injectable} from "@angular/core";
 import {Http, Response} from "@angular/http";
 import {Contacts, Contact, ContactName, ContactField } from "ionic-native";
+import { Carrier, Device, Reading, EmergencyContact, User } from "../models";
 
 @Injectable()
 export class DataService {

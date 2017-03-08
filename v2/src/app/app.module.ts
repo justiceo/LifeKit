@@ -16,9 +16,6 @@ import {Carriers} from "../pages/naloxone-carriers/carriers";
 import {Profile} from "../pages/profile/profile";
 import {Settings} from "../pages/settings/settings";
 import {Vitals} from "../pages/vitals-monitor/vitals";
-import {JWT} from "../providers/jwt.service";
-import {AuthService} from "../providers/auth.service";
-import {DataService} from "../providers/data.service";
 
 //import { Auth } from '../pages/auth/auth.module';
 
@@ -84,7 +81,7 @@ const deepLinkConfig: DeepLinkConfig = <DeepLinkConfig>{
         Settings,
         Vitals
     ],
-    providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}, JWT, AuthService, DataService]
+    providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}]
 })
 export class AppModule {
 }
