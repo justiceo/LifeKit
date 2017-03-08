@@ -1,4 +1,4 @@
-class Reading {
+export class Reading {
     type: string;
     value: number;
 }
