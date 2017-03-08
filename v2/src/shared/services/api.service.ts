@@ -20,8 +20,8 @@ export class ApiService {
       'Accept': 'application/json'
     };
 
-    if (this.jwtService.getToken()) {
-      headersConfig['Authorization'] = `Token ${this.jwtService.getToken()}`;
+    if (this.jwtService.getAccessToken()) {
+      headersConfig['Authorization'] = `Token ${this.jwtService.getAccessToken()}`;
     }
     return new Headers(headersConfig);
   }

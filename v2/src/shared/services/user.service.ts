@@ -6,6 +6,7 @@ import { ReplaySubject } from 'rxjs/ReplaySubject';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 
+import {environment} from "../../environment/environment";
 import { ApiService } from './api.service';
 import { JwtService } from './jwt.service';
 import { User } from '../models';
@@ -28,8 +29,9 @@ export class UserService {
   // Verify JWT in localstorage with server & load user's info.
   // This runs once on application startup.
   populate() {
+    // todo: revisit this again    
     // If JWT detected, attempt to get & store user's info
-    if (this.jwtService.getToken()) {
+    if (this.jwtService.getRefreshToken()) {
       this.apiService.get('/user')
       .subscribe(
         data => this.setAuth(data.user),
@@ -41,48 +43,75 @@ export class UserService {
     }
   }
 
-  setAuth(user: User) {
+  setAuth(accessToken: string) {
     // Save JWT sent from server in localstorage
-    this.jwtService.saveToken(user.token);
-    // Set current user data into observable
-    this.currentUserSubject.next(user);
+    this.jwtService.saveAccessToken(accessToken);
     // Set isAuthenticated to true
     this.isAuthenticatedSubject.next(true);
   }
 
   purgeAuth() {
     // Remove JWT from localstorage
-    this.jwtService.destroyToken();
+    this.jwtService.destroyRefreshToken();
+    this.jwtService.destroyAccessToken();
     // Set current user to an empty object
     this.currentUserSubject.next(new User());
     // Set auth status to false
     this.isAuthenticatedSubject.next(false);
   }
 
-  attemptAuth(type, credentials): Observable<User> {
-    let route = (type === 'login') ? '/login' : '';
-    return this.apiService.post('/users' + route, {user: credentials})
-    .map(
-      data => {
-        this.setAuth(data.user);
-        return data;
-      }
-    );
+  signup(phone: string): Observable<boolean> {
+    let path = `/signup?phone=${phone}`
+    return this.apiService.get(`${environment.api_url}${path}`)
+      .map( 
+        ok => { 
+          // It worked, let's hold on to the phone number
+          this.currentUserSubject.value.phone = phone;
+          return true;
+        },
+        err => { return false;}
+      );
+  }
+
+  validate(code: number): Observable<boolean> {
+    return this._validate(this.currentUserSubject.value.phone, code);
+  }
+
+  _validate(phone: string, code: number): Observable<boolean> {
+    let path = `/validate?phone=${phone}&code=${code}`
+    return this.apiService.get(`${environment.api_url}${path}`)
+      .map( 
+        refreshToken => { 
+          // save the refresh token for use in acquiring access token
+          this.jwtService.saveRefreshToken(refreshToken);
+          return true;
+        },
+        err => { return false;}
+      );
+  }
+
+  signin() {
+    return this._signin(this.currentUserSubject.value.phone, this.jwtService.getRefreshToken());
+  }
+
+  _signin(phone: string, token: string) {
+    let path = `/signin?phone=${phone}&refreshToken=${token}`
+    return this.apiService.get(`${environment.api_url}${path}`)
+      .map( 
+        accessToken => {
+          // Save the access token
+          this.jwtService.saveAccessToken(accessToken);
+
+          // mark this user as signed in
+          this.isAuthenticatedSubject.next(true);
+
+          return accessToken; // in case someone else needs it
+        }
+      );
   }
 
   getCurrentUser(): User {
     return this.currentUserSubject.value;
-  }
-
-  // Update the user on the server (email, pass, etc)
-  update(user): Observable<User> {
-    return this.apiService
-    .put('/user', { user })
-    .map(data => {
-      // Update the currentUser observable
-      this.currentUserSubject.next(data.user);
-      return data.user;
-    });
   }
 
 }

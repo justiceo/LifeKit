@@ -1,6 +1,7 @@
 import {Component} from "@angular/core";
 import {NavController} from "ionic-angular";
 import { Contacts, Contact, ContactField, ContactName } from "ionic-native";
+import { DeviceService } from "../../shared";
 
 @Component({
     selector: 'page-contact',
@@ -10,7 +11,7 @@ export class ContactPage {
 
     someContact: Contact;
 
-    constructor(public navCtrl:NavController) {
+    constructor(public navCtrl:NavController, public deviceSerivce: DeviceService) {
         // uncomment below to create a new emergency contact        
         // dataService.createEmergencyContact("Wondering", "Boy", "123-456-7890");
 
