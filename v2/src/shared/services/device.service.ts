@@ -6,22 +6,26 @@ import { Carrier, Device, Reading, EmergencyContact, User } from "../models";
 @Injectable()
 export class DeviceService {
 
-    emergencyContacts: Array<Contact> = [];  
+    emergencyContacts: Array<EmergencyContact> = [];
+    allContacts: Array<Contact> = [];  
     devices: Array<Device> = [];
     carriers: Array<Carrier> = [];
 
-    constructor(public http: Http) {}
+    constructor(public http: Http) {
+
+    }
 
     getNaxloneCarriers(): Array<Carrier> { 
         // first refresh carrier cache from google then return. 
         return this.carriers;      
     }
 
-    getEmergencyContacts(): Array<Contact> {
+    getEmergencyContacts(): Array<EmergencyContact> {
         return this.emergencyContacts;
     }
-    addEmergencyContact(contact: Contact) {        
-        this.emergencyContacts.push(contact);
+    addEmergencyContact(contact: Contact) {    
+        let emerg = EmergencyContact.fromContact(contact);    
+        this.emergencyContacts.push(emerg);
         return contact;
     }
     createEmergencyContact(lastName, firstName, phone) {
