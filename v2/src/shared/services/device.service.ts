@@ -2,6 +2,9 @@ import {Injectable} from "@angular/core";
 import {Http, Response} from "@angular/http";
 import {Contacts, Contact, ContactName, ContactField } from "ionic-native";
 import { Carrier, Device, Reading, EmergencyContact, User } from "../models";
+import {Geolocation, Geoposition} from "ionic-native";
+import { Observable } from 'rxjs/Rx';
+import { ReplaySubject } from 'rxjs/ReplaySubject';
 
 @Injectable()
 export class DeviceService {
@@ -45,4 +48,26 @@ export class DeviceService {
     getReadings(): Array<Reading> {
         return this.getConnectedDevices().map(d => d.reading);
     }
+
+    // geolocation
+    currentPosition: Geoposition;
+
+    getCurrentPosition(): Promise<Geoposition> {
+        // issue an update request on the update
+        return Geolocation.getCurrentPosition().then((resp) => {
+            return resp;
+        });
+    }
+
+    positionSubj = new ReplaySubject<Geoposition>(1)
+    getPosition(): Observable<Geoposition> {
+        Geolocation.getCurrentPosition().then((resp) => {
+            this.positionSubj.next(resp);
+        });
+        return this.positionSubj.asObservable()
+    }
+
+    // when user enter address, resolve their coordinates
+
+    // when user has overdose, send the address
 }

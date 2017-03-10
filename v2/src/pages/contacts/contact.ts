@@ -13,7 +13,7 @@ export class ContactPage {
 
     constructor(public navCtrl:NavController, public deviceSerivce: DeviceService) {
         // uncomment below to create a new emergency contact        
-        // dataService.createEmergencyContact("Wondering", "Boy", "123-456-7890");
+        // deviceSerivce.createEmergencyContact("Wondering", "Boy", "123-456-7890");
 
         // uncomment below to get emergency Contacts
         // let contacts = dataService.getEmergencyContacts();

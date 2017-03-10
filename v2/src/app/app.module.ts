@@ -16,6 +16,7 @@ import {Carriers} from "../pages/naloxone-carriers/carriers";
 import {Profile} from "../pages/profile/profile";
 import {Settings} from "../pages/settings/settings";
 import {Vitals} from "../pages/vitals-monitor/vitals";
+import {TestPage} from "../pages/test/test";
 import { 
     ApiService,
     UserService,
@@ -41,7 +42,9 @@ const deepLinkConfig: DeepLinkConfig = <DeepLinkConfig>{
         {component: Profile, name: "profile", segment: "profile"},
         {component: Settings, name: "settings", segment: "settings"},
         {component: Vitals, name: "vitals", segment: "vitals"},
-        {component: Dashboard, name: "dashboard", segment: "dashboard"}
+        {component: Dashboard, name: "dashboard", segment: "dashboard"},
+        {component: TestPage, name: "test", segment: "test"}
+
     ]
 };
 
@@ -62,7 +65,8 @@ const deepLinkConfig: DeepLinkConfig = <DeepLinkConfig>{
         Carriers,
         Profile,
         Settings,
-        Vitals
+        Vitals,
+        TestPage
     ],
     imports: [
         //Auth,
@@ -85,7 +89,8 @@ const deepLinkConfig: DeepLinkConfig = <DeepLinkConfig>{
         Carriers,
         Profile,
         Settings,
-        Vitals
+        Vitals,
+        TestPage
     ],
     providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}, ApiService, JwtService, UserService, DeviceService]
 })
