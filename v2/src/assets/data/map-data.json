@@ -1,0 +1,12 @@
+{
+ "map": [{
+    "name": "CVS Pharmacy on Walnut",
+    "lat": 39.953039,
+    "lng": -75.192820,
+    "center": true
+  }, {
+    "name": "CVS Pharmacy on Market",
+    "lat": 39.953730,
+    "lng": -75.172993
+  }]
+}

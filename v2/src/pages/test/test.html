@@ -1,9 +1,12 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Map</ion-title>
+  </ion-navbar>
+</ion-header>
 
-<h1>Hello Test Page</h1>
-
-<p>timestamp {{ position.timestamp || "" }}</p>
-<p>lat: {{ position.coords.latitude || "" }} </p>
-<p>long: {{ position.coords.longitude || "" }} </p>
-
-<p>Map</p>
-<div id="mapContainer" style="height: 100%; min-height: 500px; min-width: 600px; background: #aaa"></div>
+<ion-content class="map-page">
+  <div style="height: 100%; width: 100%" #mapCanvas id="map_canvas"></div>
+</ion-content>

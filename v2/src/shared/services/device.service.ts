@@ -1,8 +1,8 @@
-import {Injectable} from "@angular/core";
-import {Http, Response} from "@angular/http";
-import {Contacts, Contact, ContactName, ContactField } from "ionic-native";
+import { Injectable } from "@angular/core";
+import { Http, Response } from "@angular/http";
+import { Contacts, Contact, ContactName, ContactField } from "ionic-native";
 import { Carrier, Device, Reading, EmergencyContact, User } from "../models";
-import {Geolocation, Geoposition} from "ionic-native";
+import { Geolocation, Geoposition } from "ionic-native";
 import { Observable } from 'rxjs/Rx';
 import { ReplaySubject } from 'rxjs/ReplaySubject';
 
@@ -10,24 +10,49 @@ import { ReplaySubject } from 'rxjs/ReplaySubject';
 export class DeviceService {
 
     emergencyContacts: Array<EmergencyContact> = [];
-    allContacts: Array<Contact> = [];  
+    allContacts: Array<Contact> = [];
     devices: Array<Device> = [];
     carriers: Array<Carrier> = [];
+    data: any;
 
     constructor(public http: Http) {
 
     }
 
-    getNaxloneCarriers(): Array<Carrier> { 
+    getMap() {
+        // load some sample locations (synonymous to carriers)
+        return this.load().map((data: any) => {
+            return data.map;
+        });
+    }
+
+    load(): Observable<any> {
+        if (this.data) {
+            return Observable.of(this.data);
+        } else {
+            return this.http.get('assets/data/map-data.json')
+                .map(this.processData);
+        }
+    }
+
+    processData(data: any) {
+        // do any preprocessing here
+        // for now, there's none
+        this.data = data.json();
+        return this.data;
+    }
+
+
+    getNaxloneCarriers(): Array<Carrier> {
         // first refresh carrier cache from google then return. 
-        return this.carriers;      
+        return this.carriers;
     }
 
     getEmergencyContacts(): Array<EmergencyContact> {
         return this.emergencyContacts;
     }
-    addEmergencyContact(contact: Contact) {    
-        let emerg = EmergencyContact.fromContact(contact);    
+    addEmergencyContact(contact: Contact) {
+        let emerg = EmergencyContact.fromContact(contact);
         this.emergencyContacts.push(emerg);
         return contact;
     }
@@ -35,7 +60,7 @@ export class DeviceService {
         let contact: Contact = Contacts.create();
         contact.name = new ContactName(null, lastName, firstName);
         contact.phoneNumbers = [new ContactField("phone", phone)];
-        return this.addEmergencyContact(contact);         
+        return this.addEmergencyContact(contact);
     }
 
     // devices
@@ -52,11 +77,13 @@ export class DeviceService {
     // geolocation
     currentPosition: Geoposition;
 
-    getCurrentPosition(): Promise<Geoposition> {
+    getCurrentPosition(): Observable<Geoposition> {
         // issue an update request on the update
-        return Geolocation.getCurrentPosition().then((resp) => {
-            return resp;
+        var x = new ReplaySubject<Geoposition>(1);
+        Geolocation.getCurrentPosition().then((resp) => {
+            x.next(resp);
         });
+        return x.asObservable();
     }
 
     positionSubj = new ReplaySubject<Geoposition>(1)
