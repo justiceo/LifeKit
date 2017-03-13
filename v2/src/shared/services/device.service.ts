@@ -16,13 +16,12 @@ export class DeviceService {
     data: any;
 
     constructor(public http: Http) {
-
     }
 
-    getMap() {
+    getCarrierLocations() {
         // load some sample locations (synonymous to carriers)
         return this.load().map((data: any) => {
-            return data.map;
+            return data.map;            
         });
     }
 
@@ -35,10 +34,10 @@ export class DeviceService {
         }
     }
 
+    // this function is not "owned" by this class, but by the load function above. 
     processData(data: any) {
-        // do any preprocessing here
-        // for now, there's none
-        this.data = data.json();
+        this.data = data.json();        
+        // do any further preprocessing here, don't forget this function is not owned by this class.
         return this.data;
     }
 
@@ -73,9 +72,6 @@ export class DeviceService {
     getReadings(): Array<Reading> {
         return this.getConnectedDevices().map(d => d.reading);
     }
-
-    // geolocation
-    currentPosition: Geoposition;
 
     getCurrentPosition(): Observable<Geoposition> {
         // issue an update request on the update
