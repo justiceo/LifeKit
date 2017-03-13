@@ -3,3 +3,4 @@ export * from "./device.model";
 export * from "./emergency-contact.model";
 export * from "./reading.model";
 export * from "./user.model";
+export * from "./marker.model";

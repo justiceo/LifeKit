@@ -1,6 +1,7 @@
 import { Component, ViewChild, ElementRef } from "@angular/core";
 import { Platform } from "ionic-angular";
 import { DeviceService } from "../../shared";
+import { SimpleMarker } from "../../shared/models";
 import { Geoposition } from "ionic-native";
 
 declare var google: any;
@@ -18,10 +19,9 @@ export class TestPage {
     ionViewDidLoad() {
         let mapEle = this.mapElement.nativeElement;
         let map;
-        
+
         this.deviceService.getCurrentPosition().subscribe(
-            geoPosition => {
-                let userPosition = this.flattenGeoposition(geoPosition);
+            userPosition => {
                 // center map on user's location
                 map = new google.maps.Map(mapEle, {
                     center: userPosition,
@@ -32,22 +32,13 @@ export class TestPage {
                 this.addToMap(userPosition, map);
 
                 // get other marker's and add
-                this.deviceService.getCarrierLocations().subscribe((mapData: any) => {
-                    mapData.forEach((markerData: any) => {
+                this.deviceService.getCarrierLocations().subscribe((mapData: Array<SimpleMarker>) => {
+                    mapData.forEach((markerData: SimpleMarker) => {
                         this.addToMap(markerData, map);
                     });
                 });
 
             })
-    }
-
-    flattenGeoposition(geoPos: Geoposition) {
-        return {
-            lat: geoPos.coords.latitude,
-            lng: geoPos.coords.longitude,
-            timestamp: geoPos.timestamp,
-            name: "Your location"
-        }
     }
 
     addToMap(markerData, map) {
